@@ -1,4 +1,4 @@
-export default function ({
+export default function SelectInput({
   label,
   required = false,
   helper_text = '',

@@ -12,7 +12,7 @@ import {
 } from 'recharts';
 import { axios } from '../../axios';
 
-export default function ({ component: { id, heading = '', settings } }) {
+export default function Chart({ component: { id, heading = '', settings } }) {
   const [isLoading, setLoading] = useState(true);
   const [queryResult, setQueryResult] = useState([]);
 
@@ -44,7 +44,7 @@ export default function ({ component: { id, heading = '', settings } }) {
   ) {
     return (
       <div className='text-error font-semibold text-center text-xl'>
-        No data available for component's query!
+        No data available for component&apos;s query!
       </div>
     );
   }

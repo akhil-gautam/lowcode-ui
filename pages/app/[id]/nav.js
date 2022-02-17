@@ -4,13 +4,13 @@ import { Loader } from 'react-feather';
 
 import { usePage } from '../../../store/page';
 
-export default function ({ app_id }) {
+export default function AppNavigation({ app_id }) {
   const { pages, fetch: fetchPages } = usePage();
   useEffect(async () => {
     await fetchPages(app_id);
   }, []);
-  if(pages.length){
-    Router.push(`/app/${app_id}/nav/${pages[0].id}`)
+  if (pages.length) {
+    Router.push(`/app/${app_id}/nav/${pages[0].id}`);
   }
   return (
     <div className='h-screen w-screen flex flex-col justify-center items-center bg-gradient-to-br from-indigo-400 via-yellow-100 to-blue-300'>

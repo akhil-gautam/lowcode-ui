@@ -9,7 +9,7 @@ import { Layout } from '../../../components/Layout';
 import { TextInput, Button } from '../../../components/shared';
 import { usePage } from '../../../store/page';
 
-export default function ({ page_id, referer }) {
+export default function PageEdit({ page_id, referer }) {
   const [loading, setLoading] = useState(false);
 
   const { fetchById, pages, currentPage, setCurrentPage } = usePage();

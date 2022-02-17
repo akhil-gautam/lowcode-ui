@@ -6,7 +6,7 @@ import { axios } from '../../axios';
 import { useApp } from '../../store/app';
 import { Button } from '../shared';
 
-export default function ({ refetch }) {
+export default function Applist({ refetch }) {
   const { apps } = useApp();
 
   const updateApp = async (data, id) => {
@@ -33,7 +33,7 @@ export default function ({ refetch }) {
     return (
       <div className='flex flex-col items-center justify-center px-4 py-16 bg-white rounded-lg space-y-5'>
         <div className='text-error'>
-          You haven't created any application yet!
+          You haven&apos;t created any application yet!
         </div>
         <CreateApp refetch={refetch} />
       </div>

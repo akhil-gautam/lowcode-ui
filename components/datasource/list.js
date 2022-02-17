@@ -2,9 +2,8 @@ import { useState } from 'react';
 import { Edit } from 'react-feather';
 import { CreateDS, DBConsole, EditDS } from '.';
 import { useDatasource } from '../../store/datasource';
-import { Button } from '../shared';
 
-export default function ({ refetch }) {
+export default function DSList({ refetch }) {
   const [isOpen, setIsOpen] = useState(false);
   const [currentDS, setCurrentDS] = useState();
   const { data_sources } = useDatasource();
@@ -18,7 +17,7 @@ export default function ({ refetch }) {
     return (
       <div className='flex flex-col items-center justify-center space-y-5 px-4 py-16 border border-base-300'>
         <div className='font-medium tracking-wide text-xl text-red-500'>
-          You haven't added any data source yet!
+          You haven&apos;t added any data source yet!
         </div>
         <CreateDS refetch={refetch} />
       </div>

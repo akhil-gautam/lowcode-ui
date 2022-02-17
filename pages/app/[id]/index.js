@@ -1,4 +1,4 @@
-export default function () {
+export default function AppDetails() {
   return <div>App/ID/index.js</div>;
 }
 

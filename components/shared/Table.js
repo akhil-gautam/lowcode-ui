@@ -38,10 +38,11 @@ export default function Table({ columns, data }) {
       <div className='overflow-x-auto overflow-y-scroll h-80 my-2'>
         <table className='table w-full table-zebra' {...getTableProps()}>
           <thead>
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
+            {headerGroups.map((headerGroup, idx1) => (
+              <tr key={idx1} {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column, idx2) => (
                   <th
+                    key={idx2}
                     {...column.getHeaderProps(column.getSortByToggleProps())}
                     className={
                       column.isSorted
@@ -58,13 +59,15 @@ export default function Table({ columns, data }) {
             ))}
           </thead>
           <tbody {...getTableBodyProps()}>
-            {rows.map((row, i) => {
+            {rows.map((row, idx1) => {
               prepareRow(row);
               return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => {
+                <tr key={idx1} {...row.getRowProps()}>
+                  {row.cells.map((cell, idx2) => {
                     return (
-                      <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                      <td key={idx2} {...cell.getCellProps()}>
+                        {cell.render('Cell')}
+                      </td>
                     );
                   })}
                 </tr>

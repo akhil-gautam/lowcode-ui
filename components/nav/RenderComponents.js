@@ -6,7 +6,7 @@ const COMPONENT_TYPE_MAP = {
   chart: chart,
 };
 
-export default function ({ components }) {
+export default function RenderComponents({ components }) {
   if (components.length === 0) {
     return (
       <div>

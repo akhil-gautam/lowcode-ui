@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 import { axios } from '../../axios';
 import { Button, Table } from '../shared';
 
-export default function ({ data_source_id }) {
+export default function TestQuery({ data_source_id }) {
   let [isOpen, setIsOpen] = useState(false);
   const [queryResult, setQueryResult] = useState([]);
   const [columns, setColumns] = useState([]);

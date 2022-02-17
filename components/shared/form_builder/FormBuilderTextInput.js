@@ -1,4 +1,4 @@
-export default function ({
+export default function FormBuilderTextInput({
   label,
   field_type,
   required = false,

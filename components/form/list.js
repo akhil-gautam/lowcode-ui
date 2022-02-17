@@ -8,7 +8,7 @@ import { axios } from '../../axios';
 import { useFormStore } from '../../store/form';
 import { Button } from '../shared';
 
-export default function ({ app_id }) {
+export default function FormList({ app_id }) {
   const { forms, fetchForms } = useFormStore();
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export default function ({ app_id }) {
     return (
       <div className='flex flex-col justify-center items-center pt-10 space-y-5 w-full md:px-10'>
         <span className='text-error font-semibold'>
-          You haven't create any form in this app!
+          You haven&apos;t create any form in this app!
         </span>
         <FormCreate app_id={app_id} />
       </div>

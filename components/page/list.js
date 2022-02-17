@@ -8,7 +8,7 @@ import { axios } from '../../axios';
 import { usePage } from '../../store/page';
 import { Button } from '../shared';
 
-export default function ({ app_id }) {
+export default function PageList({ app_id }) {
   const { pages, fetch: fetchPages } = usePage();
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export default function ({ app_id }) {
     return (
       <div className='flex flex-col justify-center items-center space-y-5 w-full md:px-10'>
         <span className='text-error font-semibold'>
-          You haven't added any page in this app!
+          You haven&apos;t added any page in this app!
         </span>
         <PageCreate app_id={app_id} />
       </div>

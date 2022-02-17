@@ -3,7 +3,7 @@ import { Edit } from 'react-feather';
 import { ComponentCreate, ComponentEdit } from '.';
 import { useComponent } from '../../store/component';
 
-export default function ({ page_id }) {
+export default function ComponentList({ page_id }) {
   const [isOpen, setIsOpen] = useState(false);
   const [editComponent, setEditComponent] = useState(null);
   const { components, fetch: fetchComponents } = useComponent();

@@ -6,11 +6,11 @@ import { FormElementsList } from '../../../components/form_elements';
 import { Layout } from '../../../components/Layout';
 import { Button, TextInput } from '../../../components/shared';
 
-export default function ({ form_id }) {
+export default function FormEdit({ form_id }) {
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState(null);
   let helper_text =
-    "Put form fields in single-quoted curly braces like {{ first_name }} where first_name is a column in the table.";
+    'Put form fields in single-quoted curly braces like {{ first_name }} where first_name is a column in the table.';
 
   const {
     register,

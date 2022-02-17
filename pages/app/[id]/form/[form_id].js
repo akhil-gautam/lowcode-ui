@@ -7,7 +7,7 @@ import { API_URL, axios as myAxios } from '../../../../axios';
 import RenderFormFields from '../../../../components/form_elements/RenderFormFields';
 import { Button } from '../../../../components/shared';
 
-export default function ({ app_id, form, form_elements }) {
+export default function FormDetails({ form, form_elements }) {
   const [loading, setLoading] = useState(false);
   const { register, handleSubmit } = useForm();
   async function onSubmit(data) {

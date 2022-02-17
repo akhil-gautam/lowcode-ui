@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 import { axios } from '../../axios';
 import { Details } from '../datasource';
 
-export default function ({ component: { id, heading, settings } }) {
+export default function DataTable({ component: { id, heading, settings } }) {
   const [isLoading, setLoading] = useState(true);
   const [queryResult, setQueryResult] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +41,7 @@ export default function ({ component: { id, heading, settings } }) {
   ) {
     return (
       <div className='text-error font-semibold text-center text-xl'>
-        No data available for component's query!
+        No data available for component&apos;s query!
       </div>
     );
   }
@@ -66,8 +66,9 @@ export default function ({ component: { id, heading, settings } }) {
               </tr>
             </thead>
             <tbody>
-              {queryResult.map((result) => (
+              {queryResult.map((result, idx) => (
                 <tr
+                  key={idx}
                   className='cursor-pointer'
                   onClick={
                     settings?.row_click_enabled

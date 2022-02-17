@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { ArrowLeft } from 'react-feather';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
@@ -11,7 +10,7 @@ import { PageList } from '../../../components/page';
 import { Button, TextInput } from '../../../components/shared';
 import { useDatasource } from '../../../store/datasource';
 
-export default function ({ app_id }) {
+export default function AppEdit({ app_id }) {
   const [loading, setLoading] = useState(false);
   const [app, setApp] = useState(null);
 

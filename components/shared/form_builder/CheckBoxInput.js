@@ -1,4 +1,9 @@
-export default function ({ label, db_column, required = false, register }) {
+export default function CheckBoxInput({
+  label,
+  db_column,
+  required = false,
+  register,
+}) {
   return (
     <label className='w-full flex space-x-2 items-center my-4'>
       <input

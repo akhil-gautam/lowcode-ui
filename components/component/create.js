@@ -208,7 +208,7 @@ export default function Create({ page_id }) {
                           {...register('settings.row_click_enabled')}
                         />
                         <span className='label-text font-semibold text-gray-700'>
-                          Enable clicking on table row to open detail's?
+                          Enable clicking on table row to open detail&apos;s?
                         </span>
                       </label>
                     )}
@@ -236,7 +236,7 @@ export default function Create({ page_id }) {
                             {...register('settings.footer_action_enabled')}
                           />
                           <span className='label-text font-semibold text-gray-700'>
-                            Show VIEW/EDIT button in card's footer?
+                            Show VIEW/EDIT button in card&apos;s footer?
                           </span>
                         </label>
                       </>

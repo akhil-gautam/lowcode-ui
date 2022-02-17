@@ -1,6 +1,11 @@
 import { Loader } from 'react-feather';
 
-export default function ({ isLoading, children, className = '', ...rest }) {
+export default function Button({
+  isLoading,
+  children,
+  className = '',
+  ...rest
+}) {
   return (
     <button
       className={`btn space-x-5 ${

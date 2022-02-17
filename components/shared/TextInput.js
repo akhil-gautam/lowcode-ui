@@ -6,7 +6,11 @@ const TextInput = React.forwardRef(({ label, helperText, ...rest }, ref) => {
       <label className='label'>
         <span className='label-text font-semibold text-gray-700'>{label}</span>
       </label>
-      <input className='input input-primary input-bordered font-semibold' ref={ref} {...rest} />
+      <input
+        className='input input-primary input-bordered font-semibold'
+        ref={ref}
+        {...rest}
+      />
       {helperText && (
         <label className='label'>
           <span className='label-text-alt'>{helperText}</span>
@@ -15,5 +19,7 @@ const TextInput = React.forwardRef(({ label, helperText, ...rest }, ref) => {
     </div>
   );
 });
+
+TextInput.displayName = 'TextInput';
 
 export default TextInput;

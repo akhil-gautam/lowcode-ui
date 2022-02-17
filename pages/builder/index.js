@@ -8,7 +8,7 @@ import { Layout } from '../../components/Layout';
 import { useApp } from '../../store/app';
 import { useDatasource } from '../../store/datasource';
 
-export default function () {
+export default function Builder() {
   const [isLoading, setIsLoading] = useState(false);
   const { setDatasources } = useDatasource();
   const { setApps } = useApp();

@@ -4,7 +4,7 @@ import { axios } from '../../axios';
 import { Details } from '../datasource';
 import { Button } from '../shared';
 
-export default function ({ component: { id, heading, settings } }) {
+export default function CardsList({ component: { id, heading, settings } }) {
   const [isLoading, setLoading] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [currentData, setCurrentData] = useState(null);
@@ -41,7 +41,7 @@ export default function ({ component: { id, heading, settings } }) {
   ) {
     return (
       <div className='text-error font-semibold text-center text-xl'>
-        No data available for component's query!
+        No data available for component&apos;s query!
       </div>
     );
   }

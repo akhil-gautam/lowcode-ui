@@ -194,7 +194,7 @@ export default function Edit({
                           {...register('settings.row_click_enabled')}
                         />
                         <span className='label-text font-semibold text-gray-700'>
-                          Enable clicking on table row to open detail's?
+                          Enable clicking on table row to open detail&apos;s?
                         </span>
                       </label>
                     )}
