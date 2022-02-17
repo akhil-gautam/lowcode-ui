@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { axios } from '../../../axios';
+import { FormElementsList } from '../../../components/form_elements';
 import { Layout } from '../../../components/Layout';
 import { Button, TextInput } from '../../../components/shared';
 
 export default function ({ form_id }) {
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState(null);
+  let helper_text =
+    "Put form fields in single-quoted curly braces like {{ first_name }} where first_name is a column in the table.";
 
   const {
     register,
@@ -27,9 +31,10 @@ export default function ({ form_id }) {
     if (loading) return;
     setLoading(true);
     try {
-      await axios.patch('forms', {
+      const response = await axios.patch(`forms/${form_id}`, {
         form: data,
       });
+      setForm(response);
       toast.success('Updated successfully!');
     } catch (e) {
       !e.response?.data && toast.error(e.message);
@@ -48,8 +53,9 @@ export default function ({ form_id }) {
   }
   return (
     <Layout>
-      <section className='w-full md:w-1/2 self-center'>
+      <section className='w-full md:w-1/2 self-center mb-10 bg-white rounded p-4'>
         <form onSubmit={handleSubmit(onSubmit)}>
+          <header className='text-xl font-semibold underline'>Edit form</header>
           <TextInput
             label='Title'
             type='text'
@@ -66,19 +72,17 @@ export default function ({ form_id }) {
               placeholder='Form query'
               defaultValue={form.form_query}
               {...register('form_query', {
-                required:
-                  'Put form fields in curly braces like {{first_name}} where first_name is a column in the table.',
+                required: 'Form query is required.',
               })}
             ></textarea>
-            <span className='label-text-alt'>
-              Query to save form fields in the DB
-            </span>
+            <span className='label-text-alt'>{helper_text}</span>
           </label>
           <Button type='submit' className='w-full mt-4' isLoading={loading}>
             Update
           </Button>
         </form>
       </section>
+      <FormElementsList form_id={form_id} />
     </Layout>
   );
 }

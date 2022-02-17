@@ -1,3 +1,4 @@
+import Router from 'next/router';
 import { useEffect, useState } from 'react';
 
 import { axios } from '../../axios';
@@ -12,8 +13,14 @@ export default function () {
   const { setDatasources } = useDatasource();
   const { setApps } = useApp();
 
-  useEffect(() => {
-    fetchBuilderData();
+  useEffect(async () => {
+    try {
+      await fetchBuilderData();
+    } catch (e) {
+      if (e.response.status === 422) {
+        Router.push('/auth/signin');
+      }
+    }
   }, []);
 
   const fetchBuilderData = async () => {
@@ -27,12 +34,14 @@ export default function () {
   return (
     <Layout>
       {isLoading ? (
-        <section className='h-screen w-screen flex justify-center items-center text-info text-2xl'>Loading, please wait...</section>
+        <section className='h-screen w-screen flex justify-center items-center text-info text-2xl'>
+          Loading, please wait...
+        </section>
       ) : (
-        <>
-          <AppList refetch={fetchBuilderData} />
+        <section className='flex flex-col'>
           <DSList refetch={fetchBuilderData} />
-        </>
+          <AppList refetch={fetchBuilderData} />
+        </section>
       )}
     </Layout>
   );

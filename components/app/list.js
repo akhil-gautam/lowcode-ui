@@ -31,21 +31,18 @@ export default function ({ refetch }) {
 
   if (apps.length == 0) {
     return (
-      <div className='flex flex-col items-center justify-center px-4 py-16 border border-base-300 space-y-5'>
+      <div className='flex flex-col items-center justify-center px-4 py-16 bg-white rounded-lg space-y-5'>
         <div className='text-error'>
           You haven't created any application yet!
         </div>
-        <CreateApp />
+        <CreateApp refetch={refetch} />
       </div>
     );
   }
   return (
     <>
-      <div className='flex items-center justify-between'>
-        <h3 className='font-semibold text-2xl'>Applications</h3>
-        <CreateApp refetch={refetch} />
-      </div>
-      <div className='grid grid-cols-3 gap-4 mb-10'>
+      <h3 className='font-semibold text-2xl mb-2'>Applications</h3>
+      <div className='grid md:grid-cols-3 gap-4 mb-10'>
         {apps.map(({ id, name, status }) => (
           <div
             className={`card h-36 bg-white ${
@@ -101,6 +98,8 @@ export default function ({ refetch }) {
             </div>
           </div>
         ))}
+
+        <CreateApp refetch={refetch} />
       </div>
     </>
   );

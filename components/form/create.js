@@ -11,6 +11,8 @@ import { Button, TextInput } from '../shared';
 export default function Create({ app_id }) {
   let [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  let helper_text =
+    'Put form fields in single-quoted curly braces like {{ first_name }} where first_name is a column in the table.';
 
   const { fetchForms } = useFormStore();
 
@@ -120,9 +122,7 @@ export default function Create({ app_id }) {
                             'Query is required to add data to your component!',
                         })}
                       ></textarea>
-                      <span className='label-text-alt'>
-                        Query to save form fields in the DB
-                      </span>
+                      <span className='label-text-alt'>{helper_text}</span>
                     </label>
                     <Button
                       type='submit'

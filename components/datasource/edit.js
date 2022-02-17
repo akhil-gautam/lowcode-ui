@@ -1,44 +1,42 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
-import { Database, Plus, XSquare } from 'react-feather';
+import { XSquare } from 'react-feather';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
 import { axios } from '../../axios';
 import { Button, TextInput } from '../shared';
 
-export default function Create({ refetch }) {
-  let [isOpen, setIsOpen] = useState(false);
+export default function Edit({
+  refetch,
+  data_source: { id, source: initialSource, settings },
+  isOpen,
+  closeModal,
+}) {
+  const [source, setSource] = useState(initialSource);
   const [loading, setLoading] = useState(false);
 
-  const { register, handleSubmit, watch } = useForm();
-  const watchSource = watch('source');
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  function openModal() {
-    setIsOpen(true);
-  }
+  const { register, handleSubmit } = useForm();
 
   const onSubmit = async (data) => {
     if (loading) return;
     setLoading(true);
-
-    watchSource === 'mysql' && delete data.settings.dbname;
-    watchSource === 'postgres' && delete data.settings.database;
-
     try {
-      await axios.post('data_sources', {
-        data_source: data,
+      await axios.patch(`data_sources/${id}`, {
+        data_source: {
+          settings: data,
+          source,
+        },
       });
-      await refetch();
-      toast.success('Created successfully!');
-      setIsOpen(false);
+      refetch();
+      toast.success('Updated successfully!');
+      closeModal();
     } catch (e) {
       !e.response?.data && toast.error(e.message);
-      e.response?.data && Object.values(e.response?.data).forEach(toast.error);
+      e.response?.data &&
+        Object.values(e.response?.data)
+          .filter((el) => typeof el != 'object')
+          .forEach(toast.error);
     } finally {
       setLoading(false);
     }
@@ -46,13 +44,6 @@ export default function Create({ refetch }) {
 
   return (
     <>
-      <div className='rounded-2xl hover:shadow-2xl hover:bg-purple-100 transition duration-1000 bg-white flex justify-center items-center py-10'>
-        <button type='button' onClick={openModal} className='btn space-x-3'>
-          <span>Data source</span>
-          <Plus />
-        </button>
-      </div>
-
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as='div'
@@ -71,8 +62,6 @@ export default function Create({ refetch }) {
             >
               <Dialog.Overlay className='fixed inset-0 bg-gray-900 opacity-80' />
             </Transition.Child>
-
-            {/* This element is to trick the browser into centering the modal contents. */}
             <span
               className='inline-block h-screen align-middle'
               aria-hidden='true'
@@ -93,11 +82,8 @@ export default function Create({ refetch }) {
                   as='h3'
                   className='text-lg font-bold leading-6 text-gray-900 mb-5 flex justify-between items-center'
                 >
-                  <div>New data source</div>
-                  <XSquare
-                    className='cursor-pointer'
-                    onClick={() => setIsOpen(false)}
-                  />
+                  <div>Edit data source</div>
+                  <XSquare className='cursor-pointer' onClick={closeModal} />
                 </Dialog.Title>
                 <Dialog.Description as='div'>
                   <form onSubmit={handleSubmit(onSubmit)} className='space-y-2'>
@@ -107,60 +93,57 @@ export default function Create({ refetch }) {
                       </span>
                       <select
                         className='select select-bordered w-full'
-                        defaultValue='postgres'
-                        {...register('source')}
+                        defaultValue={initialSource}
+                        onChange={(e) => setSource(e.target.value)}
                       >
+                        <option disabled='disabled' selected='selected'>
+                          Choose the type of data source
+                        </option>
                         <option value='postgres'>Postgres</option>
                         <option value='mysql'>MySQL</option>
                       </select>
                     </label>
-                    {watchSource === 'mysql' ? (
-                      <TextInput
-                        type='text'
-                        label='Database name'
-                        placeholder='Database name'
-                        {...register('settings.database')}
-                      />
-                    ) : (
-                      <TextInput
-                        type='text'
-                        label='Database name'
-                        placeholder='Database name'
-                        {...register('settings.dbname')}
-                      />
-                    )}
                     <TextInput
                       type='text'
-                      defaultValue=''
-                      label='Database user'
-                      placeholder='Username'
-                      {...register('settings.user')}
+                      defaultValue={settings?.dbname}
+                      label='Database name'
+                      placeholder='Database name'
+                      {...register('dbname')}
+                    />
+                    <TextInput
+                      type='text'
+                      label='Username'
+                      defaultValue={settings?.user}
+                      placeholder='Database user'
+                      {...register('user')}
                     />
                     <TextInput
                       type='password'
-                      defaultValue=''
-                      label="Database user's password"
-                      placeholder='Password'
-                      {...register('settings.password')}
+                      label='Password'
+                      defaultValue={settings?.password}
+                      placeholder='Password will be saved in plaintext for now!'
+                      {...register('password')}
                     />
                     <TextInput
                       type='text'
                       placeholder='Host(ex: localhost)'
                       label='Host'
-                      {...register('settings.host')}
+                      defaultValue={settings?.host}
+                      {...register('host')}
                     />
                     <TextInput
                       type='text'
                       placeholder='Port(ex: 5432)'
                       label='Port'
-                      {...register('settings.port')}
+                      defaultValue={settings?.port}
+                      {...register('port')}
                     />
                     <Button
                       type='submit'
                       className='w-full mt-4'
                       isLoading={loading}
                     >
-                      Create
+                      Update
                     </Button>
                   </form>
                 </Dialog.Description>

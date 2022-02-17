@@ -7,11 +7,13 @@ import { API_URL } from '../../../../axios';
 import { RenderComponents } from '../../../../components/nav';
 
 import { useComponent } from '../../../../store/component';
+import { useFormStore } from '../../../../store/form';
 import { usePage } from '../../../../store/page';
 
 export default function PageNavigator({ app_id, page_id, app }) {
   const [loggedIn, setLoggedIn] = useState(false);
   const { pages, fetch: fetchPages } = usePage();
+  const { forms, fetchForms } = useFormStore();
   const { components, fetch: fetchComponents } = useComponent();
   const [redirect, setRedirect] = useState(false);
 
@@ -22,6 +24,7 @@ export default function PageNavigator({ app_id, page_id, app }) {
   useEffect(async () => {
     if (app.status === 'public_app' || loggedIn) {
       await fetchPages(app_id);
+      await fetchForms(app_id);
     } else {
       setRedirect(true);
     }
@@ -54,6 +57,13 @@ export default function PageNavigator({ app_id, page_id, app }) {
             {pages.map(({ id, name }) => (
               <Link href={`/app/${app_id}/nav/${id}`} key={id}>
                 <a className='btn btn-ghost rounded-btn'>{name}</a>
+              </Link>
+            ))}
+            {forms.map(({ id, title }) => (
+              <Link href={`/app/${app_id}/form/${id}`} key={id}>
+                <a className='btn btn-ghost rounded-btn' target='_blank'>
+                  {title}
+                </a>
               </Link>
             ))}
           </div>

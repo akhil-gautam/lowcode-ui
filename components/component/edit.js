@@ -221,6 +221,55 @@ export default function Edit({
                         />
                       </section>
                     )}
+                    {data.component_type === 'chart' && (
+                      <>
+                        <TextInput
+                          label='Title of chart'
+                          type='text'
+                          placeholder='Title'
+                          defaultValue={settings.title}
+                          {...register('settings.title')}
+                        />
+
+                        <TextInput
+                          label='Lable for X-axis'
+                          type='text'
+                          placeholder='label'
+                          defaultValue={settings.xLabel}
+                          {...register('settings.xLabel')}
+                        />
+                        <TextInput
+                          label='Lable for Y-axis'
+                          type='text'
+                          placeholder='label'
+                          defaultValue={settings.yLabel}
+                          {...register('settings.yLabel')}
+                        />
+                        <TextInput
+                          label="Key for X-axis's data"
+                          type='text'
+                          defaultValue={settings.xData}
+                          placeholder='accessor key for data that will be shown on X-axis'
+                          helperText='Accessor key is the column from component query used to fetch data!'
+                          {...register('settings.xData')}
+                        />
+                        <TextInput
+                          label="Key for Y-axis's data"
+                          type='text'
+                          defaultValue={settings.yData}
+                          placeholder='accessor key for data that will be shown on Y-axis'
+                          helperText='Accessor key is the column from component query used to fetch data!'
+                          {...register('settings.yData')}
+                        />
+                        <TextInput
+                          label='Legend for the graph'
+                          type='text'
+                          defaultValue={settings.legend}
+                          placeholder='Legend text(optional)'
+                          {...register('settings.legend')}
+                        />
+                      </>
+                    )}
                     <div className='justify-between w-full flex border-t pt-4'>
                       <Button
                         className='btn-error'

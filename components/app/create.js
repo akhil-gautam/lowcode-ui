@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
 import { axios } from '../../axios';
-import { useApp } from '../../store/app';
 import { useDatasource } from '../../store/datasource';
 import { TextInput, Button } from '../shared';
 
@@ -46,10 +45,12 @@ export default function Create({ refetch }) {
 
   return (
     <>
-      <button type='button' onClick={openModal} className='btn space-x-3'>
-        <span>Application</span>
-        <Plus />
-      </button>
+      <div className='rounded-2xl hover:shadow-2xl hover:bg-purple-100 transition duration-1000 bg-white flex justify-center items-center py-10'>
+        <button type='button' onClick={openModal} className='btn space-x-3'>
+          <span>Application</span>
+          <Plus />
+        </button>
+      </div>
 
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog

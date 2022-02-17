@@ -56,8 +56,11 @@ export default function ({ component: { id, heading, settings } }) {
           {heading}
         </header>
         <section className='grid md:grid-cols-3 gap-8'>
-          {queryResult.map((result) => (
-            <article className='card border-2 rounded-none border-gray-700 hover:bg-blue-50 transition-all hover:shadow-2xl'>
+          {queryResult.map((result, idx) => (
+            <article
+              className='card border-2 rounded-none border-gray-700 hover:bg-blue-50 transition-all hover:shadow-2xl'
+              key={idx}
+            >
               <div className='card-body p-2'>
                 <h2 className='card-title'>{result[settings.body]}</h2>
                 <div>{result[settings.header]}</div>
