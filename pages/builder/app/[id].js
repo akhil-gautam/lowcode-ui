@@ -9,6 +9,7 @@ import { FormList } from '../../../components/form';
 import { PageList } from '../../../components/page';
 import { Button, TextInput } from '../../../components/shared';
 import { useDatasource } from '../../../store/datasource';
+import Router from 'next/router';
 
 export default function AppEdit({ app_id }) {
   const [loading, setLoading] = useState(false);
@@ -19,8 +20,14 @@ export default function AppEdit({ app_id }) {
   const { data_sources, fetch: fetchDS } = useDatasource();
 
   useEffect(async () => {
-    await fetchDS();
-    await fetchApp();
+    try {
+      await fetchDS();
+      await fetchApp();
+    } catch (error) {
+      if ([422, 401].includes(error.response.status)) {
+        Router.push('/auth/signin');
+      }
+    }
   }, []);
 
   const fetchApp = async () => {
@@ -53,7 +60,7 @@ export default function AppEdit({ app_id }) {
         {app ? (
           <form
             onSubmit={handleSubmit(onUpdate)}
-            className='w-full md:w-1/2 px-3 py-5 rounded-xl my-0 md:mb-10 bg-white'
+            className='w-full md:w-1/2 px-3 py-5 rounded my-0 md:mb-10 bg-white'
           >
             <header className='text-xl uppercase font-bold mb-5'>
               {app?.name?.replace('_', ' ')}
@@ -63,7 +70,7 @@ export default function AppEdit({ app_id }) {
                 Data source
               </div>
               <select
-                className='select select-bordered w-full mb-4'
+                className='select select-primary w-full mb-4'
                 defaultValue={
                   data_sources.find(({ id }) => id === app.data_source_id)?.id
                 }
@@ -86,7 +93,7 @@ export default function AppEdit({ app_id }) {
             />
             <Button
               type='submit'
-              className='w-full btn-secondary mt-4'
+              className='btn-block'
               isLoading={loading}
             >
               Update

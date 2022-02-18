@@ -56,7 +56,7 @@ export default function Create({ page_id }) {
       <button
         type='button'
         onClick={openModal}
-        className='btn btn-sm btn-secondary space-x-3'
+        className='btn btn-sm space-x-3'
       >
         <span>Component</span>
         <Plus />
@@ -218,13 +218,13 @@ export default function Create({ page_id }) {
                         <TextInput
                           label='Card header'
                           type='text'
-                          placeholder="accessor key for card's header"
-                          helperText='Accessor key is the column from component query used to fetch data!'
+                          placeholder='one of the column name from the component query'
+                          helperText='Column name from component query will be used to fetch data!'
                           {...register('settings.header')}
                         />
                         <TextInput
                           type='text'
-                          placeholder="accessor key for card's body"
+                          placeholder='one of the column name from the component query'
                           helperText='If the value comes out to be an image URL, we will show the image.'
                           label='Card body'
                           {...register('settings.body')}
@@ -250,38 +250,31 @@ export default function Create({ page_id }) {
                           placeholder='Title'
                           {...register('settings.title')}
                         />
-
                         <TextInput
-                          label='Lable for X-axis'
+                          label="Column name for X-axis's data"
+                          type='text'
+                          placeholder='one of the column name from the component query'
+                          helperText='Column name from component query will be used to fetch data!'
+                          {...register('settings.xData')}
+                        />
+                        <TextInput
+                          label='Label for X-axis'
                           type='text'
                           placeholder='label'
                           {...register('settings.xLabel')}
                         />
                         <TextInput
-                          label='Lable for Y-axis'
+                          label="Column name for X-axis's data"
                           type='text'
-                          placeholder='label'
-                          {...register('settings.yLabel')}
-                        />
-                        <TextInput
-                          label="Key for X-axis's data"
-                          type='text'
-                          placeholder='accessor key for data that will be shown on X-axis'
-                          helperText='Accessor key is the column from component query used to fetch data!'
-                          {...register('settings.xData')}
-                        />
-                        <TextInput
-                          label="Key for Y-axis's data"
-                          type='text'
-                          placeholder='accessor key for data that will be shown on Y-axis'
-                          helperText='Accessor key is the column from component query used to fetch data!'
+                          placeholder='one of the column name from the component query'
+                          helperText='Column name from component query will be used to fetch data!'
                           {...register('settings.yData')}
                         />
                         <TextInput
-                          label="Legend for the graph"
+                          label='Label for Y-axis'
                           type='text'
-                          placeholder='Legend text(optional)'
-                          {...register('settings.legend')}
+                          placeholder='label'
+                          {...register('settings.yLabel')}
                         />
                       </>
                     )}

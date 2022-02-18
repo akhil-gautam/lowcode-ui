@@ -28,7 +28,7 @@ export default function FormList({ app_id }) {
   if (forms.length === 0) {
     return (
       <div className='flex flex-col justify-center items-center pt-10 space-y-5 w-full md:px-10'>
-        <span className='text-error font-semibold'>
+        <span className='text-error-content-content font-semibold'>
           You haven&apos;t create any form in this app!
         </span>
         <FormCreate app_id={app_id} />

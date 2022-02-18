@@ -43,7 +43,7 @@ export default function Chart({ component: { id, heading = '', settings } }) {
     ((length = queryResult.length), queryResult.length === 0)
   ) {
     return (
-      <div className='text-error font-semibold text-center text-xl'>
+      <div className='text-error-content font-semibold text-center text-xl'>
         No data available for component&apos;s query!
       </div>
     );
@@ -64,25 +64,31 @@ export default function Chart({ component: { id, heading = '', settings } }) {
             top: 5,
             right: 30,
             left: 20,
-            bottom: 5,
+            bottom: 20,
           }}
         >
           <CartesianGrid strokeDasharray='3 3' />
-          <XAxis dataKey='name' />
-          <YAxis />
+          <XAxis
+            dataKey={settings.xData}
+            label={{
+              value: settings.xLabel,
+              position: 'bottom',
+              offset: 0,
+            }}
+          />
+          <YAxis
+            label={{
+              value: settings.yLabel,
+              angle: -90,
+              position: 'insideLeft',
+            }}
+          />
           <Tooltip />
-          {settings.legend?.length ? (
-            <Legend
-              content={() => (
-                <div className='text-center font-semibold text-sm'>
-                  {settings.legend}
-                </div>
-              )}
-            />
-          ) : (
-            <Legend />
-          )}
-          <Bar dataKey='count' fill='#6c5fb3' />
+          <Bar
+            dataKey={settings.yData}
+            label={settings.yLabel}
+            fill='#6c5fb3'
+          />
         </BarChart>
       </ResponsiveContainer>
     </div>

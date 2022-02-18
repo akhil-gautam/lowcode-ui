@@ -27,7 +27,7 @@ export default function ComponentList({ page_id }) {
           page_id={page_id}
         />
       )}
-      <div className='w-7/12 px-5 flex flex-col items-center'>
+      <div className='w-7/12 p-5 flex flex-col items-center bg-white rounded'>
         <section className='w-full mb-5'>
           <h2 className='font-semibold text-xl mb-3'>
             Component available on the page
@@ -73,7 +73,7 @@ export default function ComponentList({ page_id }) {
             </div>
           ) : (
             <div className='flex flex-col justify-center items-center space-y-5 mb-5'>
-              <div className='text-error'>
+              <div className='text-error-content'>
                 Please add some components to your page!
               </div>
             </div>

@@ -17,7 +17,7 @@ export default function Builder() {
     try {
       await fetchBuilderData();
     } catch (e) {
-      if (e.response.status === 422) {
+      if ([422, 401].includes(e.response.status)) {
         Router.push('/auth/signin');
       }
     }
@@ -39,8 +39,8 @@ export default function Builder() {
         </section>
       ) : (
         <section className='flex flex-col'>
-          <DSList refetch={fetchBuilderData} />
           <AppList refetch={fetchBuilderData} />
+          <DSList refetch={fetchBuilderData} />
         </section>
       )}
     </Layout>

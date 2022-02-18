@@ -46,7 +46,7 @@ export default function FormEdit({ form_id }) {
 
   if (!form) {
     return (
-      <div className='flex justify-center items-center text-error font-semibold h-screen'>
+      <div className='flex justify-center items-center text-error-content font-semibold h-screen'>
         Loading form...
       </div>
     );

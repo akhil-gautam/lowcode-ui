@@ -40,7 +40,7 @@ export default function DataTable({ component: { id, heading, settings } }) {
     ((length = queryResult.length), queryResult.length === 0)
   ) {
     return (
-      <div className='text-error font-semibold text-center text-xl'>
+      <div className='text-error-content font-semibold text-center text-xl'>
         No data available for component&apos;s query!
       </div>
     );

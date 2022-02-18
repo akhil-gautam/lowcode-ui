@@ -28,7 +28,7 @@ export default function PageList({ app_id }) {
   if (pages.length === 0) {
     return (
       <div className='flex flex-col justify-center items-center space-y-5 w-full md:px-10'>
-        <span className='text-error font-semibold'>
+        <span className='text-error-content font-semibold'>
           You haven&apos;t added any page in this app!
         </span>
         <PageCreate app_id={app_id} />

@@ -19,7 +19,7 @@ export default function Layout({ children, ...rest }) {
         <div className='flex-none px-2 mx-4'>
           <Link href='/builder'>
             <a className='text-sm font-bold text-blue-400 border border-blue-400 p-1'>
-              fossbites
+              WebQL
             </a>
           </Link>
         </div>

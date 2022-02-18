@@ -11,11 +11,9 @@ const TextInput = React.forwardRef(({ label, helperText, ...rest }, ref) => {
         ref={ref}
         {...rest}
       />
-      {helperText && (
-        <label className='label'>
-          <span className='label-text-alt'>{helperText}</span>
-        </label>
-      )}
+      <label className='label'>
+        <span className='label-text-alt'>{helperText}</span>
+      </label>
     </div>
   );
 });

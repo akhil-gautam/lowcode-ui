@@ -40,7 +40,7 @@ export default function CardsList({ component: { id, heading, settings } }) {
     ((length = queryResult.length), queryResult.length === 0)
   ) {
     return (
-      <div className='text-error font-semibold text-center text-xl'>
+      <div className='text-error-content font-semibold text-center text-xl'>
         No data available for component&apos;s query!
       </div>
     );
@@ -64,12 +64,14 @@ export default function CardsList({ component: { id, heading, settings } }) {
               <div className='card-body p-2'>
                 <h2 className='card-title'>{result[settings.body]}</h2>
                 <div>{result[settings.header]}</div>
-                <Button
-                  className='btn-block rounded-none mt-4'
-                  onClick={() => showDetails(result)}
-                >
-                  Details
-                </Button>
+                {settings.footer_action_enabled && (
+                  <Button
+                    className='btn-block rounded-none mt-4'
+                    onClick={() => showDetails(result)}
+                  >
+                    Details
+                  </Button>
+                )}
               </div>
             </article>
           ))}

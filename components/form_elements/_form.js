@@ -71,7 +71,7 @@ export default function Form({ form_id }) {
       <button
         type='button'
         onClick={openModal}
-        className='btn btn-secondary space-x-3'
+        className='btn space-x-3'
       >
         <span>Form element</span>
         <Plus />

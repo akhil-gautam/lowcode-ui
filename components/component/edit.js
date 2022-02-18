@@ -117,7 +117,7 @@ export default function Edit({
                   <XSquare className='cursor-pointer' onClick={closeModal} />
                 </Dialog.Title>
                 <Dialog.Description as='div'>
-                  <form onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
+                  <form onSubmit={handleSubmit(onSubmit)} className='space-y-2'>
                     <TextInput
                       type='text'
                       label='Heading'
@@ -156,7 +156,7 @@ export default function Edit({
                       <div className='label-text font-semibold text-gray-700'>
                         Component type
                       </div>
-                      <div className='form-control'>
+                      <div className='form-control hover:bg-slate-50'>
                         <label className='cursor-pointer label'>
                           <span className='label-text'>Table</span>
                           <input
@@ -169,7 +169,7 @@ export default function Edit({
                           />
                         </label>
                       </div>
-                      <div className='form-control'>
+                      <div className='form-control hover:bg-slate-50'>
                         <label className='cursor-pointer label'>
                           <span className='label-text'>Cards list</span>
                           <input
@@ -206,19 +206,30 @@ export default function Edit({
                         <TextInput
                           label='Card header'
                           type='text'
-                          placeholder="accessor key for card's header"
+                          placeholder='one of the column name from the component query'
                           defaultValue={settings.header}
-                          helperText='Accessor key is the column from component query used to fetch data!'
+                          helperText='Column name from component query will be used to fetch data!'
                           {...register('settings.header')}
                         />
                         <TextInput
                           type='text'
-                          placeholder="accessor key for card's body"
+                          placeholder='one of the column name from the component query'
                           helperText='If the value comes out to be an image URL, we will show the image.'
                           label='Card body'
                           defaultValue={settings.body}
                           {...register('settings.body')}
                         />
+                        <label className='flex space-x-2 items-center mt-3'>
+                          <input
+                            type='checkbox'
+                            className='checkbox'
+                            defaultChecked={settings.footer_action_enabled}
+                            {...register('settings.footer_action_enabled')}
+                          />
+                          <span className='label-text font-semibold text-gray-700'>
+                            Show VIEW/EDIT button in card&apos;s footer?
+                          </span>
+                        </label>
                       </section>
                     )}
                     {data.component_type === 'chart' && (
@@ -230,43 +241,35 @@ export default function Edit({
                           defaultValue={settings.title}
                           {...register('settings.title')}
                         />
-
                         <TextInput
-                          label='Lable for X-axis'
+                          label="Column name for X-axis's data"
+                          type='text'
+                          defaultValue={settings.xData}
+                          placeholder='one of the column name from the component query'
+                          helperText='Column name from component query will be used to fetch data!'
+                          {...register('settings.xData')}
+                        />
+                        <TextInput
+                          label='Label for X-axis'
                           type='text'
                           placeholder='label'
                           defaultValue={settings.xLabel}
                           {...register('settings.xLabel')}
                         />
                         <TextInput
-                          label='Lable for Y-axis'
+                          label='Label for Y-axis'
                           type='text'
                           placeholder='label'
                           defaultValue={settings.yLabel}
                           {...register('settings.yLabel')}
                         />
                         <TextInput
-                          label="Key for X-axis's data"
-                          type='text'
-                          defaultValue={settings.xData}
-                          placeholder='accessor key for data that will be shown on X-axis'
-                          helperText='Accessor key is the column from component query used to fetch data!'
-                          {...register('settings.xData')}
-                        />
-                        <TextInput
-                          label="Key for Y-axis's data"
+                          label="Column name for Y-axis's data"
                           type='text'
                           defaultValue={settings.yData}
-                          placeholder='accessor key for data that will be shown on Y-axis'
-                          helperText='Accessor key is the column from component query used to fetch data!'
+                          placeholder='one of the column name from the component query'
+                          helperText='Column name from component query will be used to fetch data!'
                           {...register('settings.yData')}
-                        />
-                        <TextInput
-                          label='Legend for the graph'
-                          type='text'
-                          defaultValue={settings.legend}
-                          placeholder='Legend text(optional)'
-                          {...register('settings.legend')}
                         />
                       </>
                     )}

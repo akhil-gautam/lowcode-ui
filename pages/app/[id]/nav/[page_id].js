@@ -47,8 +47,8 @@ export default function PageNavigator({ app_id, page_id, app }) {
       <div className='navbar bg-neutral text-neutral-content mb-2 shadow-lg'>
         <div className='flex-none px-2 mx-4'>
           <Link href='/builder'>
-            <a className='text-sm font-bold text-blue-400 border border-blue-400 p-1'>
-              fossbites
+            <a className='text-sm font-bold bg-gray-900 p-2'>
+              WebQL
             </a>
           </Link>
         </div>

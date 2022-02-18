@@ -117,7 +117,7 @@ export default function TestQuery({ data_source_id }) {
                   {queryResult.length ? (
                     <Table columns={columns} data={queryResult} />
                   ) : (
-                    <div className='text-error font-semibold text-center p-5'>
+                    <div className='text-error-content font-semibold text-center p-5'>
                       No data to show!
                     </div>
                   )}

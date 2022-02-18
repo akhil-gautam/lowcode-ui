@@ -37,7 +37,7 @@ export default function DSList({ refetch }) {
       <h3 className='font-semibold text-2xl mb-2'>Data sources</h3>
       <div className='grid md:grid-cols-3 gap-4 mb-8'>
         {data_sources.map(({ id, source, settings }, idx) => (
-          <div className='card bg-white' key={id}>
+          <div className='card card-compact bg-white' key={id}>
             <div className='card-body'>
               <h2 className='card-title capitalize'>{source}</h2>
               {Object.keys(settings).map((key, index) => (

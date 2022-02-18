@@ -21,7 +21,7 @@ export function Layout({ children }) {
         <div className='flex-none px-2 mx-4'>
           <Link href='/builder'>
             <a className='text-xl font-bold'>
-              Fossbites
+              WebQL
             </a>
           </Link>
         </div>

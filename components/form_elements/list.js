@@ -26,7 +26,7 @@ export default function FormList({ form_id }) {
   if (form_elements.length === 0) {
     return (
       <div className='flex flex-col justify-center items-center pt-10 space-y-5 w-full md:px-10 border-t'>
-        <span className='text-error font-semibold'>
+        <span className='text-error-content font-semibold'>
           You haven&apos;t added any element to your form!
         </span>
         <FormElementsForm form_id={form_id} />

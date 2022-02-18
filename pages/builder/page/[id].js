@@ -51,14 +51,14 @@ export default function PageEdit({ page_id, referer }) {
           <span>Back to app</span>
         </a>
       </Link>
-      <section className='flex w-full'>
+      <section className='flex w-full space-x-5'>
         {currentPage ? (
           <>
             <form
               onSubmit={handleSubmit(onUpdate)}
-              className='w-5/12 px-3 py-5 border rounded space-y-4'
+              className='w-5/12 px-3 py-5 rounded space-y-4 bg-white'
             >
-              <header className='text-xl uppercase font-bold text-secondary'>
+              <header className='text-xl uppercase font-bold'>
                 Edit page
               </header>
               <TextInput
@@ -81,7 +81,7 @@ export default function PageEdit({ page_id, referer }) {
               />
               <Button
                 type='submit'
-                className='w-full btn-secondary'
+                className='btn-block'
                 isLoading={loading}
               >
                 Update

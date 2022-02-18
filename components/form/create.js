@@ -53,7 +53,7 @@ export default function Create({ app_id }) {
       <button
         type='button'
         onClick={openModal}
-        className='btn btn-block btn-secondary space-x-3'
+        className='btn btn-block space-x-3'
       >
         <span>Form</span>
         <Plus />
