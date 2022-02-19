@@ -10,13 +10,17 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import Link from 'next/link';
+import Image from 'next/image';
+
+import PG from '../images/pg.svg';
+import MySQL from '../images/mysql.svg';
 
 export default function Home() {
   return (
     <main className='w-screen h-full min-h-screen bg-black'>
-      <div className='opacity-50 animate-spin-slow blur-3xl fixed mx-auto'>
-        <div className='h-96 w-96 rounded-full bg-sky-100 mb-20'></div>
-        <div className='h-96 w-96 rounded-full bg-purple-300'></div>
+      <div className='opacity-0 md:opacity-50 animate-spin-slow blur-3xl fixed mx-auto'>
+        <div className='h-48 w-48 rounded-xl bg-sky-900 mb-10'></div>
+        <div className='h-48 w-48 rounded-xl bg-purple-700'></div>
       </div>
       <div className='navbar shadow fixed top-0 z-50 bg-black/30 md:bg-transparent text-neutral-content backdrop-blur-sm backdrop-filter'>
         <div className='flex-1'>
@@ -44,9 +48,11 @@ export default function Home() {
       <div className='w-screen h-full flex flex-col justify-center items-center text-white mt-auto pb-20'>
         <div className='text-center text-neutral-content mt-52'>
           <div className='max-w-xl'>
-            <h1 className='text-5xl font-bold'>
-              A minimal nocode webapp builder{' '}
-            </h1>
+            <div className='mt-20 mb-10 font-semibold text-2xl py-px bg-gradient-to-r from-gray-900 via-blue-400 to-gray-900'>
+              <h1 className='text-5xl font-bold bg-black'>
+                A minimal nocode webapp builder{' '}
+              </h1>
+            </div>
             <p className='py-6 tracking-widest text-gray-100'>
               An open-source framework to build applications without pain. Build
               applications with modern users interface within seconds.
@@ -179,8 +185,21 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className='w-full max-w-4xl bg-sky-50 text-blue-600 p-8 rounded-xl mt-8 transition-transform duration-500 md:hover:scale-105'>
+          <div className='w-full max-w-4xl bg-sky-50 text-blue-600 p-8 rounded-xl mt-8'>
             <ChartComponent />
+          </div>
+          <div className='mt-20 mb-10 font-semibold text-2xl py-px bg-gradient-to-r from-gray-900 via-blue-400 to-gray-900'>
+            <h2 className='bg-black px-5 py-2'>
+              Databases that we currently support
+            </h2>
+          </div>
+          <div className='w-full max-w-4xl flex flex-col md:flex-row justify-center items-center space-x-0 md:space-x-20 space-y-20 md:space-y-0 mb-20'>
+            <div className='w-56 h-56 p-3 shadow-neon bg-black hover:-rotate-2 hover:scale-105 transition-transform'>
+              <Image src={PG} />
+            </div>
+            <div className='w-56 h-56 p-3 shadow-neon bg-black hover:rotate-2 hover:scale-105 transition'>
+              <Image src={MySQL} />
+            </div>
           </div>
         </section>
       </div>
@@ -250,17 +269,7 @@ const data = [
 function ChartComponent() {
   return (
     <ResponsiveContainer width='95%' height={400}>
-      <BarChart
-        width={700}
-        height={300}
-        data={data}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-      >
+      <BarChart width={700} height={300} data={data}>
         <CartesianGrid strokeDasharray='3 3' />
         <XAxis dataKey='name' />
         <YAxis />
