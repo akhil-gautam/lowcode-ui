@@ -13,8 +13,12 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <main className='w-screen h-full min-h-screen'>
-      <div className='navbar shadow fixed top-0 z-20 text-neutral-content backdrop-blur-sm backdrop-filter'>
+    <main className='w-screen h-full min-h-screen bg-black'>
+      <div className='opacity-50 animate-spin-slow blur-3xl fixed mx-auto'>
+        <div className='h-96 w-96 rounded-full bg-sky-100 mb-20'></div>
+        <div className='h-96 w-96 rounded-full bg-purple-300'></div>
+      </div>
+      <div className='navbar shadow fixed top-0 z-50 bg-black/30 md:bg-transparent text-neutral-content backdrop-blur-sm backdrop-filter'>
         <div className='flex-1'>
           <a className='btn btn-ghost normal-case text-xl'>WebQL</a>
         </div>
@@ -37,7 +41,7 @@ export default function Home() {
           </ul>
         </div>
       </div>
-      <div className='w-screen h-full flex flex-col justify-center items-center bg-black text-white mt-auto pb-20'>
+      <div className='w-screen h-full flex flex-col justify-center items-center text-white mt-auto pb-20'>
         <div className='text-center text-neutral-content mt-52'>
           <div className='max-w-xl'>
             <h1 className='text-5xl font-bold'>
@@ -53,11 +57,11 @@ export default function Home() {
           </div>
         </div>
         <h2 className='font-extralight mt-10 text-xl bg-blue-400/20 rounded-lg py-1 px-4'>
-          Pages built using WebQL looks smoking 🔥
+          Pages built using WebQL look smoking 🔥
         </h2>
-        <section className='flex flex-col w-full justify-center items-center px-8 py-4'>
-          <ul className='flex flex-col divide-y bg-sky-100 text-gray-800 p-3 md:p-8 w-screen md:max-w-4xl overflow-x-auto rounded-xl'>
-            <li className='flex items-center bg-white py-3 px-5 text-sm mb-2 font-bold'>
+        <section className='flex flex-col w-full justify-center items-center px-8 py-4 z-40'>
+          <ul className='flex flex-col divide-y bg-sky-100 text-gray-800 p-3 md:p-8 w-screen md:max-w-4xl overflow-x-auto rounded-xl transform md:hover:rotate-2 transition-all'>
+            <li className='min-w-max flex items-center bg-white py-3 px-5 text-sm mb-2 font-bold'>
               <span className='w-10'></span>
               <span className='w-32'>Name</span>
               <span className='w-40'>Email</span>
@@ -65,7 +69,7 @@ export default function Home() {
               <span className='w-32'>Status</span>
               <span className='w-32'>Created at</span>
             </li>
-            <li className='flex items-center bg-white py-3 px-5 text-sm'>
+            <li className='min-w-max flex items-center bg-white py-3 px-5 text-sm'>
               <span className='w-10'>
                 <input type='checkbox' className='checkbox' />
               </span>
@@ -83,7 +87,7 @@ export default function Home() {
               </span>
               <span className='w-32'>7 minutes ago</span>
             </li>
-            <li className='flex items-center bg-white py-3 px-5 text-sm'>
+            <li className='min-w-max flex items-center bg-white py-3 px-5 text-sm'>
               <span className='w-10'>
                 <input type='checkbox' className='checkbox' />
               </span>
@@ -101,7 +105,7 @@ export default function Home() {
               </span>
               <span className='w-32'>7 minutes ago</span>
             </li>
-            <li className='flex items-center bg-white py-3 px-5 text-sm'>
+            <li className='min-w-max flex items-center bg-white py-3 px-5 text-sm'>
               <span className='w-10'>
                 <input type='checkbox' className='checkbox' />
               </span>
@@ -119,7 +123,7 @@ export default function Home() {
               </span>
               <span className='w-32'>7 minutes ago</span>
             </li>
-            <li className='flex items-center bg-white py-3 px-5 text-sm'>
+            <li className='min-w-max flex items-center bg-white py-3 px-5 text-sm'>
               <span className='w-10'>
                 <input type='checkbox' className='checkbox' />
               </span>
@@ -138,8 +142,8 @@ export default function Home() {
               <span className='w-32'>7 minutes ago</span>
             </li>
           </ul>
-          <div className='grid md:grid-cols-3 gap-4 max-w-4xl bg-sky-100 p-8 rounded-xl mt-8'>
-            <div className='card bg-white text-black'>
+          <div className='grid md:grid-cols-3 gap-4 max-w-4xl bg-sky-100 p-8 rounded-xl mt-8 group'>
+            <div className='card bg-white text-black md:group-hover:translate-y-5 transition-all'>
               <div className='card-body'>
                 <div className='card-title'>Minions</div>
                 <p>
@@ -150,7 +154,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className='card bg-white text-black'>
+            <div className='card bg-white text-black md:group-hover:-translate-y-5 transition-all'>
               <div className='card-body'>
                 <div className='card-title'>Angry Birds</div>
                 <p>
@@ -162,7 +166,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className='card bg-white text-black'>
+            <div className='card bg-white text-black md:group-hover:translate-y-5 transition-all'>
               <div className='card-body'>
                 <div className='card-title'>Raya and the Last Dragon</div>
                 <p>
@@ -175,7 +179,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className='w-full max-w-4xl bg-sky-50 p-8 rounded-xl mt-8'>
+          <div className='w-full max-w-4xl bg-sky-50 text-blue-600 p-8 rounded-xl mt-8 transition-transform duration-500 md:hover:scale-105'>
             <ChartComponent />
           </div>
         </section>
@@ -262,7 +266,7 @@ function ChartComponent() {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey='jobs' fill='#2c2c2c' />
+        <Bar dataKey='jobs' fill='#570DF8' />
       </BarChart>
     </ResponsiveContainer>
   );
