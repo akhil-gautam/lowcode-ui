@@ -57,9 +57,9 @@ export default function TestQuery({ data_source_id }) {
       <button
         type='button'
         onClick={openModal}
-        className='btn btn-sm space-x-3'
+        title='Open database console'
+        className='btn btn-sm'
       >
-        <span>Test queries</span>
         <Monitor />
       </button>
 

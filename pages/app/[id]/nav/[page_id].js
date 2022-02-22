@@ -47,13 +47,11 @@ export default function PageNavigator({ app_id, page_id, app }) {
       <div className='navbar bg-neutral text-neutral-content mb-2 shadow-lg'>
         <div className='flex-none px-2 mx-4'>
           <Link href='/builder'>
-            <a className='text-sm font-bold bg-gray-900 p-2'>
-              WebQL
-            </a>
+            <a className='text-sm font-bold bg-gray-900 p-2'>WebQL</a>
           </Link>
         </div>
         <div className='flex-1 px-2 mx-2'>
-          <div className='items-stretch hidden lg:flex space-x-1'>
+          <div className='items-stretch hidden lg:flex space-x-1 flex-wrap'>
             {pages.map(({ id, name }) => (
               <Link href={`/app/${app_id}/nav/${id}`} key={id}>
                 <a className='btn btn-ghost rounded-btn'>{name}</a>
@@ -82,15 +80,20 @@ export default function PageNavigator({ app_id, page_id, app }) {
 }
 
 export async function getServerSideProps({ query: { id, page_id } }) {
-  const response = await axios.get(`${API_URL}apps/${id}`, {
-    headers: { Accept: 'application/json' },
-  });
-
-  return {
-    props: {
-      app_id: id,
-      page_id: page_id,
-      app: response.data,
-    },
-  };
+  try {
+    const response = await axios.get(`${API_URL}apps/${id}`, {
+      headers: { Accept: 'application/json' },
+    });
+    return {
+      props: {
+        app_id: id,
+        page_id: page_id,
+        app: response.data,
+      },
+    };
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  }
 }

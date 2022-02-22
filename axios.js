@@ -34,7 +34,7 @@ axios.interceptors.response.use(
         message,
         redirect: {
           permanent: false,
-          destination: '/auth/sign_in',
+          destination: '/auth/signin',
         },
       });
     } else {

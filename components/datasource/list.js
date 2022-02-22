@@ -1,7 +1,10 @@
 import { useState } from 'react';
-import { Edit } from 'react-feather';
+import { Edit, Settings } from 'react-feather';
+import toast from 'react-hot-toast';
 import { CreateDS, DBConsole, EditDS } from '.';
+import { axios } from '../../axios';
 import { useDatasource } from '../../store/datasource';
+import { Button } from '../shared';
 
 export default function DSList({ refetch }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +14,17 @@ export default function DSList({ refetch }) {
   const handleEdit = (data_source) => {
     setCurrentDS(data_source);
     setIsOpen(true);
+  };
+
+  const handleAutoApp = async (data_source) => {
+    try {
+      await axios.post(`data_sources/${data_source.id}/auto_create_pages`);
+      toast.success('Generated successfully!!');
+      refetch();
+      // TODO: redirect user to the newly created application
+    } catch (error) {
+      toast.error(error?.message);
+    }
   };
 
   if (data_sources.length == 0) {
@@ -46,17 +60,24 @@ export default function DSList({ refetch }) {
                   <span>{settings[key]}</span>
                 </div>
               ))}
-              <div className='card-actions justify-center md:justify-end space-x-2 items-center md:border-none border-t md:mt-4 md:pt-0 mt-4 pt-4'>
-                <button
-                  className='flex items-center space-x-2 bg-purple-500 text-white font-semibold py-1 px-10 hover:bg-purple-300 rounded-lg'
-                  onClick={() => handleEdit(data_sources[idx])}
-                >
-                  <div>Edit</div>
-                  <div>
+              <div className='card-actions justify-between items-center md:border-none border-t md:mt-4 md:pt-0 mt-4 pt-4'>
+                <div>
+                  <Button
+                    className='btn-sm btn-warning font-light'
+                    onClick={() => handleAutoApp(data_sources[idx])}
+                  >
+                    Auto Generate app
+                  </Button>
+                </div>
+                <div>
+                  <Button
+                    className='btn-info btn-sm mr-4'
+                    onClick={() => handleEdit(data_sources[idx])}
+                  >
                     <Edit />
-                  </div>
-                </button>
-                <DBConsole data_source_id={id} />
+                  </Button>
+                  <DBConsole data_source_id={id} />
+                </div>
               </div>
             </div>
           </div>
