@@ -9,21 +9,21 @@ export default function DataTable({ component: { id, heading, settings } }) {
   const [isOpen, setIsOpen] = useState(false);
   const [currentData, setCurrentData] = useState(null);
 
-  useEffect(async () => {
-    await fetchResult();
+  useEffect(() => {
+    async function fetchResult() {
+      try {
+        const response = await axios.get(`components/${id}/exec_query`);
+        setQueryResult(response.result);
+      } catch (e) {
+        !e.response?.data && toast.error(e.message);
+        e.response?.data && toast.error(e.response?.data.exception);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchResult();
   }, []);
 
-  const fetchResult = async () => {
-    try {
-      const response = await axios.get(`components/${id}/exec_query`);
-      setQueryResult(response.result);
-    } catch (e) {
-      !e.response?.data && toast.error(e.message);
-      e.response?.data && toast.error(e.response?.data.exception);
-    } finally {
-      setLoading(false);
-    }
-  };
   const showDetails = (data) => {
     setIsOpen(true);
     setCurrentData(data);

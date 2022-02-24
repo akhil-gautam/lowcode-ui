@@ -30,11 +30,12 @@ export default function Table({ columns, data }) {
   // Render the UI for your table
   return (
     <>
-      <TextInput
+      {/* TODO: needs to be fixed*/}
+      {/* <TextInput
         value={filterInput}
         onChange={handleFilterChange}
         placeholder={'Search name'}
-      />
+      /> */}
       <div className='overflow-x-auto overflow-y-scroll h-80 my-2'>
         <table className='table w-full table-zebra' {...getTableProps()}>
           <thead>

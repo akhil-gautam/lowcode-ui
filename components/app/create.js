@@ -107,11 +107,13 @@ export default function Create({ refetch }) {
                       <option disabled='disabled' selected='selected'>
                         Choose your data source
                       </option>
-                      {data_sources.map(({ id, settings: { dbname } }) => (
-                        <option key={id} value={id}>
-                          {dbname}
-                        </option>
-                      ))}
+                      {data_sources.map(
+                        ({ id, settings: { database, dbname } }) => (
+                          <option key={id} value={id}>
+                            {dbname || database}
+                          </option>
+                        )
+                      )}
                     </select>
                     <TextInput
                       type='text'

@@ -10,21 +10,20 @@ export default function CardsList({ component: { id, heading, settings } }) {
   const [currentData, setCurrentData] = useState(null);
   const [queryResult, setQueryResult] = useState([]);
 
-  useEffect(async () => {
-    await fetchResult();
-  }, []);
-
-  const fetchResult = async () => {
-    try {
-      const response = await axios.get(`components/${id}/exec_query`);
-      setQueryResult(response.result);
-    } catch (e) {
-      !e.response?.data && toast.error(e.message);
-      e.response?.data && toast.error(e.response?.data.exception);
-    } finally {
-      setLoading(false);
+  useEffect(() => {
+    async function fetchResult() {
+      try {
+        const response = await axios.get(`components/${id}/exec_query`);
+        setQueryResult(response.result);
+      } catch (e) {
+        !e.response?.data && toast.error(e.message);
+        e.response?.data && toast.error(e.response?.data.exception);
+      } finally {
+        setLoading(false);
+      }
     }
-  };
+    fetchResult();
+  }, []);
 
   const showDetails = (data) => {
     setIsOpen(true);
