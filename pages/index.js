@@ -212,7 +212,7 @@ export default function Home() {
               authentication
             </li>
             <li className='p-5 tracking-wider font-thin text-lg bg-gray-800/50 border-l-4 border-x-purple-200'>
-              We don't store data from any of added databases
+              We don&apos;t store data from any of added databases
             </li>
             <li className='p-5 tracking-wider font-thin text-lg bg-gray-800/50 border-l-4 border-x-purple-200'>
               The database credentials are stored in encrypted format on our
