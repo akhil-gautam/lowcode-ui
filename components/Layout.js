@@ -27,12 +27,6 @@ export function Layout({ children }) {
         </div>
         <div className='flex-1 px-2 mx-2'>
           <div className='items-stretch hidden lg:flex space-x-1'>
-            <Link href='/datasources'>
-              <a className='btn btn-ghost rounded-btn'>Data sources</a>
-            </Link>
-            <Link href='/builder/create'>
-              <a className='btn btn-ghost rounded-btn'>Create</a>
-            </Link>
           </div>
         </div>
         {loggedIn ? (
@@ -50,7 +44,7 @@ export function Layout({ children }) {
           </div>
         )}
       </div>
-      <section className='w-full min-h-screen flex flex-col p-2 md:p-4 bg-gray-100'>
+      <section className='w-full min-h-screen flex flex-col p-2 md:p-4 bg-gray-50'>
         {children}
       </section>
     </main>

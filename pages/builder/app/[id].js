@@ -77,9 +77,9 @@ export default function AppEdit({ app_id }) {
                 {...register('data_source_id')}
               >
                 <option>Choose your data source</option>
-                {data_sources.map(({ id, settings: { dbname } }) => (
+                {data_sources.map(({ id, settings: { dbname, database } }) => (
                   <option key={id} value={id}>
-                    {dbname}
+                    {dbname || database}
                   </option>
                 ))}
               </select>
@@ -103,7 +103,7 @@ export default function AppEdit({ app_id }) {
           <div>Loading app...</div>
         )}
         {/* right section containing pages and forms*/}
-        <section className='w-full md:w-1/2 space-y-10 px-2 md:px-10 divide-y divide-dashed divide-blue-700'>
+        <section className='w-full md:w-1/2 mt-5 md:mt-0 space-y-10 px-2 md:px-10 divide-y divide-dashed divide-blue-700'>
           <PageList app_id={app_id} />
           <FormList app_id={app_id} />
         </section>

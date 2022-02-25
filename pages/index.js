@@ -45,7 +45,7 @@ export default function Home() {
           </ul>
         </div>
       </div>
-      <div className='w-screen h-full flex flex-col justify-center items-center text-white mt-auto pb-20'>
+      <div className='w-screen h-full flex flex-col justify-center items-center text-white mt-auto'>
         <div className='text-center text-neutral-content mt-52'>
           <div className='max-w-xl'>
             <div className='mt-20 mb-10 font-semibold text-2xl py-px bg-gradient-to-r from-gray-900 via-blue-400 to-gray-900'>
@@ -201,6 +201,37 @@ export default function Home() {
               <Image src={MySQL} />
             </div>
           </div>
+          <div className='mt-20 mb-10 font-semibold text-lg md:text-2xl py-px bg-gradient-to-r from-black via-gray-400 to-black'>
+            <h2 className='bg-black px-5 py-2'>
+              What do we store in our system?
+            </h2>
+          </div>
+          <ul className='text-sm w-full grid grid-cols-1 gap-4 md:grid-cols-2'>
+            <li className='p-5 tracking-wider font-thin text-lg bg-gray-800/50 border-l-4 border-x-purple-200'>
+              We store the minimum user specific data required for
+              authentication
+            </li>
+            <li className='p-5 tracking-wider font-thin text-lg bg-gray-800/50 border-l-4 border-x-purple-200'>
+              We don't store data from any of added databases
+            </li>
+            <li className='p-5 tracking-wider font-thin text-lg bg-gray-800/50 border-l-4 border-x-purple-200'>
+              The database credentials are stored in encrypted format on our
+              system
+            </li>
+            <li className='p-5 tracking-wider font-thin text-lg bg-gray-800/50 border-l-4 border-x-purple-200'>
+              Anyway, you can host it on your own infra as it is open-source
+            </li>
+          </ul>
+          <footer className='mt-20 w-full space-y-5 md:space-y-0 space-x-0 md:space-x-8 px-4 py-5 bg-gradient-to-r from-indigo-900/30 via-purple-700/30 to-blue-900/30 flex flex-col md:flex-row items-center justify-center tracking-widest'>
+            <span>Made in India</span>
+            <span>Built with Ruby on Rails</span>
+            <span className='text-center'>
+              Contact:{' '}
+              <span className='text-blue-300 font-bold text-sm'>
+                akhilgautam123@gmail.com
+              </span>
+            </span>
+          </footer>
         </section>
       </div>
     </main>

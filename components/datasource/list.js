@@ -57,7 +57,7 @@ export default function DSList({ refetch }) {
               {Object.keys(settings).map((key, index) => (
                 <div className='flex space-x-1 text-sm' key={index}>
                   <span className='capitalize font-semibold'>{key}:</span>
-                  <span>{settings[key]}</span>
+                  <span>{key === 'password' ? '**********' : settings[key]}</span>
                 </div>
               ))}
               <div className='card-actions justify-between items-center md:border-none border-t md:mt-4 md:pt-0 mt-4 pt-4'>
