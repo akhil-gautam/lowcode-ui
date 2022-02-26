@@ -46,7 +46,7 @@ export default function Home() {
         </div>
       </div>
       <div className='w-screen h-full flex flex-col justify-center items-center text-white mt-auto'>
-        <div className='text-center text-neutral-content mt-52'>
+        <div className='text-center text-neutral-content mt-32'>
           <div className='max-w-xl'>
             <div className='mt-20 mb-10 font-semibold text-2xl py-px bg-gradient-to-r from-gray-900 via-blue-400 to-gray-900'>
               <h1 className='text-5xl font-bold bg-black'>
