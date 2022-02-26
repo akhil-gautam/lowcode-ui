@@ -17,7 +17,7 @@ export default function FormList({ app_id }) {
 
   const archiveForm = async (id) => {
     try {
-      await axios.patch(`forms/${id}/archive`);
+      await axios.delete(`forms/${id}`);
       fetchForms(app_id);
       toast.success('Archived successfully');
     } catch (e) {
@@ -62,7 +62,7 @@ export default function FormList({ app_id }) {
                 className='flex items-center font-medium px-3 py-2 bg-red-50 text-red-700 hover:bg-red-100'
                 onClick={() => archiveForm(id)}
               >
-                <span className='mr-2'>Trash</span>
+                <span className='mr-2'>Archive</span>
                 <Trash />
               </button>
             </div>

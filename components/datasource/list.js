@@ -51,13 +51,18 @@ export default function DSList({ refetch }) {
       <h3 className='font-semibold text-2xl mb-2'>Data sources</h3>
       <div className='grid md:grid-cols-3 gap-4 mb-8'>
         {data_sources.map(({ id, source, settings }, idx) => (
-          <div className='card card-compact bg-white' key={id}>
+          <div
+            className='card card-compact bg-white shadow-xl transition-all hover:ring-1 ring-gray-700 hover:shadow-md'
+            key={id}
+          >
             <div className='card-body'>
               <h2 className='card-title capitalize'>{source}</h2>
               {Object.keys(settings).map((key, index) => (
                 <div className='flex space-x-1 text-sm' key={index}>
                   <span className='capitalize font-semibold'>{key}:</span>
-                  <span>{key === 'password' ? '**********' : settings[key]}</span>
+                  <span>
+                    {key === 'password' ? '**********' : settings[key]}
+                  </span>
                 </div>
               ))}
               <div className='card-actions justify-between items-center md:border-none border-t md:mt-4 md:pt-0 mt-4 pt-4'>

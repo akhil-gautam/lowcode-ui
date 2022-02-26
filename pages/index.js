@@ -62,10 +62,10 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <h2 className='font-extralight mt-10 text-xl bg-blue-400/20 rounded-lg py-1 px-4'>
+        <h2 className='font-extralight mt-10 mb-4 text-xl bg-blue-400/20 rounded-lg py-1 px-4'>
           Pages built using WebQL look smoking 🔥
         </h2>
-        <section className='flex flex-col w-full justify-center items-center px-8 py-4 z-40'>
+        <section className='flex flex-col w-full justify-center items-center z-40'>
           <ul className='flex flex-col divide-y bg-sky-100 text-gray-800 p-3 md:p-8 w-screen md:max-w-4xl overflow-x-auto rounded-xl transform md:hover:rotate-2 transition-all'>
             <li className='min-w-max flex items-center bg-white py-3 px-5 text-sm mb-2 font-bold'>
               <span className='w-10'></span>
@@ -206,7 +206,7 @@ export default function Home() {
               What do we store in our system?
             </h2>
           </div>
-          <ul className='text-sm w-full grid grid-cols-1 gap-4 md:grid-cols-2'>
+          <ul className='text-sm w-full grid grid-cols-1 gap-4 px-2 md:px-10 md:grid-cols-2'>
             <li className='p-5 tracking-wider font-thin text-lg bg-gray-800/50 border-l-4 border-x-purple-200'>
               We store the minimum user specific data required for
               authentication

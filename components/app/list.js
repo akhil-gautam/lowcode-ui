@@ -45,9 +45,7 @@ export default function Applist({ refetch }) {
       <div className='grid md:grid-cols-3 gap-4 mb-10'>
         {apps.map(({ id, name, status }) => (
           <div
-            className={`card h-36 bg-white ${
-              status === 'draft' && 'animate-pulse'
-            }`}
+            className={`card h-36 bg-white shadow-xl transition-all hover:ring-1 ring-gray-700 hover:shadow-md`}
             key={id}
           >
             <div className='card-body py-6'>

@@ -67,7 +67,7 @@ export default function PageList({ app_id }) {
                 className='flex items-center font-medium px-3 py-2 bg-red-50 text-red-700 hover:bg-red-100'
                 onClick={() => archivePage(id)}
               >
-                <span className='mr-2'>Trash</span>
+                <span className='mr-2'>Archive</span>
                 <Trash />
               </button>
             </div>

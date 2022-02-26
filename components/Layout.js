@@ -27,8 +27,8 @@ export function Layout({ children }) {
         </div>
         <div className='flex-1 px-2 mx-2'>
           <div className='items-stretch hidden lg:flex space-x-1'>
-            <Link href='/archived'>
-              <a className='btn btn-link'>Data sources</a>
+            <Link href='/builder/archived'>
+              <a className='btn'>Archive</a>
             </Link>
           </div>
         </div>
