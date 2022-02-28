@@ -68,7 +68,7 @@ export default function PageNavigator({ app_id, page_id, app }) {
         </div>
         {loggedIn && (
           <Link href='/builder'>
-            <a className='btn btn-info'>Back to builder</a>
+            <a className='btn'>Back to builder</a>
           </Link>
         )}
       </div>

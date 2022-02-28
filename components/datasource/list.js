@@ -29,7 +29,7 @@ export default function DSList({ refetch }) {
 
   if (data_sources.length == 0) {
     return (
-      <div className='flex flex-col items-center justify-center space-y-5 px-4 py-16 border border-base-300'>
+      <div className='flex flex-col items-center bg-white justify-center space-y-5 px-4 py-16 rounded mt-5'>
         <div className='font-medium tracking-wide text-xl text-red-500'>
           You haven&apos;t added any data source yet!
         </div>

@@ -32,7 +32,7 @@ export default function Applist({ refetch }) {
   if (apps.length == 0) {
     return (
       <div className='flex flex-col items-center justify-center px-4 py-16 bg-white rounded-lg space-y-5'>
-        <div className='text-error-content'>
+        <div className='font-medium tracking-wide text-xl text-red-500'>
           You haven&apos;t created any application yet!
         </div>
         <CreateApp refetch={refetch} />

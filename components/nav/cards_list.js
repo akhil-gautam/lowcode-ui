@@ -50,19 +50,19 @@ export default function CardsList({ component: { id, heading, settings } }) {
       {isOpen && (
         <Details data={currentData} onClose={() => setIsOpen(false)} />
       )}
-      <div className='bg-white p-4 shadow rounded-xl'>
+      <div className='bg-white p-4 shadow rounded-xl overflow-y-scroll h-96'>
         <header className='font-bold text-slate-800 mb-4 text-xl pl-1'>
           {heading}
         </header>
         <section className='grid md:grid-cols-3 gap-8'>
           {queryResult.map((result, idx) => (
             <article
-              className='card border-2 rounded-none border-gray-700 hover:bg-blue-50 transition-all hover:shadow-2xl'
+              className='card rounded-xl shadow-lg transition-all hover:shadow-sm hover:ring-1 ring-gray-700'
               key={idx}
             >
-              <div className='card-body p-2'>
-                <h2 className='card-title'>{result[settings.body]}</h2>
-                <div>{result[settings.header]}</div>
+              <div className='card-body'>
+                <h2 className='card-title'>{result[settings.header]}</h2>
+                <div>{result[settings.body]}</div>
                 {settings.footer_action_enabled && (
                   <Button
                     className='btn-block rounded-none mt-4'

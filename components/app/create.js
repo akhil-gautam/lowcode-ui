@@ -45,7 +45,7 @@ export default function Create({ refetch }) {
 
   return (
     <>
-      <div className='rounded-2xl hover:shadow-2xl hover:bg-purple-100 transition duration-1000 bg-white flex justify-center items-center py-10'>
+      <div className='rounded-2xl hover:shadow-2xl transition duration-1000 bg-white flex justify-center items-center py-10'>
         <button type='button' onClick={openModal} className='btn space-x-3'>
           <span>Application</span>
           <Plus />

@@ -9,24 +9,24 @@ import { Button, TextInput } from '../shared';
 
 export default function Edit({
   refetch,
-  data_source: { id, source: initialSource, settings },
+  data_source: { id, source, settings },
   isOpen,
   closeModal,
 }) {
-  const [source, setSource] = useState(initialSource);
   const [loading, setLoading] = useState(false);
+  const { register, handleSubmit, watch } = useForm();
 
-  const { register, handleSubmit } = useForm();
+  const watchSource = watch('source') || source;
+
+  console.log(watchSource);
 
   const onSubmit = async (data) => {
     if (loading) return;
     setLoading(true);
+
     try {
       await axios.patch(`data_sources/${id}`, {
-        data_source: {
-          settings: data,
-          source,
-        },
+        data_source: data,
       });
       refetch();
       toast.success('Updated successfully!');
@@ -93,50 +93,60 @@ export default function Edit({
                       </span>
                       <select
                         className='select select-bordered w-full'
-                        defaultValue={initialSource}
-                        onChange={(e) => setSource(e.target.value)}
+                        defaultValue={source}
+                        {...register('source')}
                       >
-                        <option disabled='disabled' selected='selected'>
+                        <option disabled='disabled'>
                           Choose the type of data source
                         </option>
                         <option value='postgres'>Postgres</option>
                         <option value='mysql'>MySQL</option>
                       </select>
                     </label>
-                    <TextInput
-                      type='text'
-                      defaultValue={settings?.dbname}
-                      label='Database name'
-                      placeholder='Database name'
-                      {...register('dbname')}
-                    />
+                    {watchSource === 'mysql' ? (
+                      <TextInput
+                        type='text'
+                        defaultValue={settings?.dbname}
+                        label='Database name'
+                        placeholder='Database name'
+                        {...register('settings.database')}
+                      />
+                    ) : (
+                      <TextInput
+                        type='text'
+                        defaultValue={settings?.dbname}
+                        label='Database name'
+                        placeholder='Database name'
+                        {...register('settings.dbname')}
+                      />
+                    )}
                     <TextInput
                       type='text'
                       label='Username'
                       defaultValue={settings?.user}
                       placeholder='Database user'
-                      {...register('user')}
+                      {...register('settings.user')}
                     />
                     <TextInput
                       type='password'
                       label='Password'
                       defaultValue={settings?.password}
                       placeholder='Password will be saved in plaintext for now!'
-                      {...register('password')}
+                      {...register('settings.password')}
                     />
                     <TextInput
                       type='text'
                       placeholder='Host(ex: localhost)'
                       label='Host'
                       defaultValue={settings?.host}
-                      {...register('host')}
+                      {...register('settings.host')}
                     />
                     <TextInput
                       type='text'
                       placeholder='Port(ex: 5432)'
                       label='Port'
                       defaultValue={settings?.port}
-                      {...register('port')}
+                      {...register('settings.port')}
                     />
                     <Button
                       type='submit'
