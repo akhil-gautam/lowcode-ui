@@ -56,146 +56,148 @@ export default function Archived() {
 
   return (
     <Layout>
-      {data.apps[0]?.name && (
-        <>
-          <header className='text-xl font-semibold mb-2 pl-1 text-red-700'>
-            Apps
-          </header>
-          <ul className='flex flex-col w-full mb-5'>
-            <li className='w-full flex justify-between py-4 px-4 md:px-8 font-bold text-sm bg-white mb-1'>
-              <span>Name</span>
-              <span></span>
-            </li>
-            {data.apps.map(({ id, name }) => (
-              <li
-                key={id}
-                className='flex justify-between items-center py-3 px-2 md:px-8 font-light tracking-wider text-sm bg-white'
-              >
-                <span>{name}</span>
-                <span className='flex items-center space-x-5'>
-                  <span
-                    className='p-2 cursor-pointer transition hover:bg-red-800 hover:text-white'
-                    onClick={() => reallyDelete(id, 'app')}
-                  >
-                    <Trash2 />
-                  </span>
-                  <span
-                    className='p-2 cursor-pointer hover:bg-blue-100 text-blue-900'
-                    onClick={() => restore(id, 'app')}
-                  >
-                    <RefreshCcw />
-                  </span>
-                </span>
+      <div className='px-2 md:px-32'>
+        {data.apps[0]?.name && (
+          <>
+            <header className='text-xl font-semibold mb-2 pl-1 text-red-700'>
+              Apps
+            </header>
+            <ul className='flex flex-col w-full mb-5 space-y-2'>
+              <li className='w-full flex justify-between py-4 px-4 md:px-8 font-bold text-sm bg-white mb-1'>
+                <span>Name</span>
+                <span></span>
               </li>
-            ))}
-          </ul>
-        </>
-      )}
-      {data.pages[0]?.name && (
-        <>
-          <header className='text-xl font-semibold mb-2 pl-1 text-red-700'>
-            Pages
-          </header>
-          <ul className='flex flex-col w-full mb-5'>
-            <li className='w-full flex justify-between py-4 px-4 md:px-8 font-bold text-sm bg-white mb-1'>
-              <span>Name</span>
-              <span></span>
-            </li>
-            {data.pages.map(({ id, name }) => (
-              <li
-                key={id}
-                className='flex items-center justify-between py-3 px-2 md:px-8 font-light tracking-wider text-sm bg-white'
-              >
-                <span>{name}</span>
-                <span className='flex items-center space-x-5'>
-                  <span
-                    className='p-2 cursor-pointer transition hover:bg-red-800 hover:text-white'
-                    onClick={() => reallyDelete(id, 'page')}
-                  >
-                    <Trash2 />
+              {data.apps.map(({ id, name }) => (
+                <li
+                  key={id}
+                  className='flex justify-between items-center py-3 px-2 md:px-8 font-light tracking-wider text-sm bg-white transition-all hover:shadow-md hover:ring-1 ring-black'
+                >
+                  <span>{name}</span>
+                  <span className='flex items-center space-x-5'>
+                    <span
+                      className='p-2 cursor-pointer transition hover:bg-red-800 hover:text-white'
+                      onClick={() => reallyDelete(id, 'app')}
+                    >
+                      <Trash2 />
+                    </span>
+                    <span
+                      className='p-2 cursor-pointer hover:bg-blue-100 text-blue-900'
+                      onClick={() => restore(id, 'app')}
+                    >
+                      <RefreshCcw />
+                    </span>
                   </span>
-                  <span
-                    className='p-2 cursor-pointer hover:bg-blue-100 text-blue-900'
-                    onClick={() => restore(id, 'page')}
-                  >
-                    <RefreshCcw />
-                  </span>
-                </span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+        {data.pages[0]?.name && (
+          <>
+            <header className='text-xl font-semibold mb-2 pl-1 text-red-700'>
+              Pages
+            </header>
+            <ul className='flex flex-col w-full mb-5 space-y-2'>
+              <li className='w-full flex justify-between py-4 px-4 md:px-8 font-bold text-sm bg-white mb-1 '>
+                <span>Name</span>
+                <span></span>
               </li>
-            ))}
-          </ul>
-        </>
-      )}
-      {data.components[0]?.heading && (
-        <>
-          <header className='text-xl font-semibold mb-2 pl-1 text-red-700'>
-            Components
-          </header>
-          <ul className='flex flex-col w-full mb-5'>
-            <li className='w-full flex justify-between py-4 px-4 md:px-8 font-bold text-sm bg-white mb-1'>
-              <span>Name</span>
-              <span></span>
-            </li>
-            {data.components.map(({ id, heading }) => (
-              <li
-                key={id}
-                className='flex justify-between py-3 px-2 md:px-8 font-light tracking-wider text-sm bg-white'
-              >
-                <span>{heading}</span>
-                <span className='flex space-x-5'>
-                  <span
-                    className='p-2 cursor-pointer transition hover:bg-red-800 hover:text-white'
-                    onClick={() => reallyDelete(id, 'component')}
-                  >
-                    <Trash2 />
+              {data.pages.map(({ id, name }) => (
+                <li
+                  key={id}
+                  className='flex items-center justify-between py-3 px-2 md:px-8 font-light tracking-wider text-sm bg-white transition-all hover:shadow-md hover:ring-1 ring-black'
+                >
+                  <span>{name}</span>
+                  <span className='flex items-center space-x-5'>
+                    <span
+                      className='p-2 cursor-pointer transition hover:bg-red-800 hover:text-white'
+                      onClick={() => reallyDelete(id, 'page')}
+                    >
+                      <Trash2 />
+                    </span>
+                    <span
+                      className='p-2 cursor-pointer hover:bg-blue-100 text-blue-900'
+                      onClick={() => restore(id, 'page')}
+                    >
+                      <RefreshCcw />
+                    </span>
                   </span>
-                  <span
-                    className='p-2 cursor-pointer hover:bg-blue-100 text-blue-900'
-                    onClick={() => restore(id, 'component')}
-                  >
-                    <RefreshCcw />
-                  </span>
-                </span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+        {data.components[0]?.heading && (
+          <>
+            <header className='text-xl font-semibold mb-2 pl-1 text-red-700'>
+              Components
+            </header>
+            <ul className='flex flex-col w-full mb-5 space-y-2'>
+              <li className='w-full flex justify-between py-4 px-4 md:px-8 font-bold text-sm bg-white mb-1'>
+                <span>Name</span>
+                <span></span>
               </li>
-            ))}
-          </ul>
-        </>
-      )}
-      {data.forms[0]?.title && (
-        <>
-          <header className='text-xl font-semibold mb-2 pl-1 text-red-700'>
-            Forms
-          </header>
-          <ul className='flex flex-col w-full mb-5'>
-            <li className='w-full flex justify-between py-4 px-4 md:px-8 font-bold text-sm bg-white mb-1'>
-              <span>Name</span>
-              <span></span>
-            </li>
-            {data.forms.map(({ id, title }) => (
-              <li
-                key={id}
-                className='flex justify-between py-3 px-2 md:px-8 font-light tracking-wider text-sm bg-white'
-              >
-                <span>{title}</span>
-                <span className='flex space-x-5'>
-                  <span
-                    className='p-2 cursor-pointer transition hover:bg-red-800 hover:text-white'
-                    onClick={() => reallyDelete(id, 'form')}
-                  >
-                    <Trash2 />
+              {data.components.map(({ id, heading }) => (
+                <li
+                  key={id}
+                  className='flex justify-between py-3 px-2 md:px-8 font-light tracking-wider text-sm bg-white transition-all hover:shadow-md hover:ring-1 ring-black'
+                >
+                  <span>{heading}</span>
+                  <span className='flex space-x-5'>
+                    <span
+                      className='p-2 cursor-pointer transition hover:bg-red-800 hover:text-white'
+                      onClick={() => reallyDelete(id, 'component')}
+                    >
+                      <Trash2 />
+                    </span>
+                    <span
+                      className='p-2 cursor-pointer hover:bg-blue-100 text-blue-900'
+                      onClick={() => restore(id, 'component')}
+                    >
+                      <RefreshCcw />
+                    </span>
                   </span>
-                  <span
-                    className='p-2 cursor-pointer hover:bg-blue-100 text-blue-900'
-                    onClick={() => restore(id, 'form')}
-                  >
-                    <RefreshCcw />
-                  </span>
-                </span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+        {data.forms[0]?.title && (
+          <>
+            <header className='text-xl font-semibold mb-2 pl-1 text-red-700'>
+              Forms
+            </header>
+            <ul className='flex flex-col w-full mb-5 space-y-2'>
+              <li className='w-full flex justify-between py-4 px-4 md:px-8 font-bold text-sm bg-white mb-1'>
+                <span>Name</span>
+                <span></span>
               </li>
-            ))}
-          </ul>
-        </>
-      )}
+              {data.forms.map(({ id, title }) => (
+                <li
+                  key={id}
+                  className='flex justify-between py-3 px-2 md:px-8 font-light tracking-wider text-sm bg-white transition-all hover:shadow-md hover:ring-1 ring-black'
+                >
+                  <span>{title}</span>
+                  <span className='flex space-x-5'>
+                    <span
+                      className='p-2 cursor-pointer transition hover:bg-red-800 hover:text-white'
+                      onClick={() => reallyDelete(id, 'form')}
+                    >
+                      <Trash2 />
+                    </span>
+                    <span
+                      className='p-2 cursor-pointer hover:bg-blue-100 text-blue-900'
+                      onClick={() => restore(id, 'form')}
+                    >
+                      <RefreshCcw />
+                    </span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </div>
     </Layout>
   );
 }

@@ -27,7 +27,7 @@ export default function ComponentList({ page_id }) {
           page_id={page_id}
         />
       )}
-      <div className='w-7/12 p-5 flex flex-col items-center bg-white rounded'>
+      <div className='w-full md:w-7/12 p-5 flex flex-col items-center bg-white rounded'>
         <section className='w-full mb-5'>
           <h2 className='font-semibold text-xl mb-3'>
             Component available on the page

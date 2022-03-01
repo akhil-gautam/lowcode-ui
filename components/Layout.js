@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import { Button } from './shared';
 
-export function Layout({ children }) {
+export function Layout({ children, className = '' }) {
   const [loggedIn, setLoggedIn] = useState(null);
 
   useEffect(() => {
@@ -20,9 +20,7 @@ export function Layout({ children }) {
       <div className='navbar bg-neutral text-neutral-content shadow-lg'>
         <div className='flex-none px-2 mx-4'>
           <Link href='/builder'>
-            <a className='text-xl font-bold'>
-              WebQL
-            </a>
+            <a className='text-xl font-bold'>WebQL</a>
           </Link>
         </div>
         <div className='flex-1 px-2 mx-2'>
@@ -47,7 +45,9 @@ export function Layout({ children }) {
           </div>
         )}
       </div>
-      <section className='w-full min-h-screen flex flex-col p-2 md:p-4 bg-gray-100'>
+      <section
+        className={`w-full min-h-screen flex flex-col p-2 md:p-4 bg-gray-100`}
+      >
         {children}
       </section>
     </main>

@@ -51,12 +51,12 @@ export default function PageEdit({ page_id, referer }) {
           <span>Back to app</span>
         </a>
       </Link>
-      <section className='flex w-full space-x-5'>
+      <section className='flex flex-col md:flex-row w-full space-y-8 md:space-x-5'>
         {currentPage ? (
           <>
             <form
               onSubmit={handleSubmit(onUpdate)}
-              className='w-5/12 px-3 py-5 rounded space-y-4 bg-white'
+              className='w-full md:w-5/12 px-3 py-5 rounded space-y-4 bg-white'
             >
               <header className='text-xl uppercase font-bold'>
                 Edit page
