@@ -15,8 +15,10 @@ export default function DataTable({ component: { id, heading, settings } }) {
         const response = await axios.get(`components/${id}/exec_query`);
         setQueryResult(response.result);
       } catch (e) {
-        !e.response?.data && toast.error(e.message);
-        e.response?.data && toast.error(e.response?.data.exception);
+        e.response?.data &&
+        Object.values(e.response?.data)
+          .filter((el) => typeof el != 'object')
+          .forEach(toast.error);
       } finally {
         setLoading(false);
       }

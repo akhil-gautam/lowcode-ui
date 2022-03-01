@@ -45,8 +45,10 @@ export default function TestQuery({ data_source_id }) {
       );
       toast.success('Execution successfully!');
     } catch (e) {
-      !e.response?.data && toast.error(e.message);
-      e.response?.data && toast.error(e.response?.data.exception);
+      e.response?.data &&
+        Object.values(e.response?.data)
+          .filter((el) => typeof el != 'object')
+          .forEach(toast.error);
     } finally {
       setLoading(false);
     }
