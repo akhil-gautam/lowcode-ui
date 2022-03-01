@@ -38,7 +38,10 @@ export default function FormEdit({ form_id }) {
       toast.success('Updated successfully!');
     } catch (e) {
       !e.response?.data && toast.error(e.message);
-      e.response?.data && Object.values(e.response?.data).forEach(toast.error);
+      e.response?.data &&
+        Object.values(e.response?.data)
+          .filter((el) => typeof el != 'object')
+          .forEach(toast.error);
     } finally {
       setLoading(false);
     }

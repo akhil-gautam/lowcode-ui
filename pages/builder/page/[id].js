@@ -38,7 +38,10 @@ export default function PageEdit({ page_id, referer }) {
       fetchById(page_id);
     } catch (e) {
       !e.response?.data && toast.error(e.message);
-      e.response?.data && Object.values(e.response?.data).forEach(toast.error);
+      e.response?.data &&
+        Object.values(e.response?.data)
+          .filter((el) => typeof el != 'object')
+          .forEach(toast.error);
     } finally {
       setLoading(false);
     }
@@ -58,9 +61,7 @@ export default function PageEdit({ page_id, referer }) {
               onSubmit={handleSubmit(onUpdate)}
               className='w-full md:w-5/12 px-3 py-5 rounded space-y-4 bg-white'
             >
-              <header className='text-xl uppercase font-bold'>
-                Edit page
-              </header>
+              <header className='text-xl uppercase font-bold'>Edit page</header>
               <TextInput
                 type='text'
                 label='Page name'
@@ -79,11 +80,7 @@ export default function PageEdit({ page_id, referer }) {
                 }
                 {...register('page_order')}
               />
-              <Button
-                type='submit'
-                className='btn-block'
-                isLoading={loading}
-              >
+              <Button type='submit' className='btn-block' isLoading={loading}>
                 Update
               </Button>
             </form>

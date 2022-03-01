@@ -29,7 +29,10 @@ export default function SignUp() {
       router.push('/auth/signin');
     } catch (e) {
       !e.response?.data && toast.error(e.message);
-      e.response?.data && Object.values(e.response?.data).forEach(toast.error);
+      e.response?.data &&
+        Object.values(e.response?.data)
+          .filter((el) => typeof el != 'object')
+          .forEach(toast.error);
     } finally {
       setLoading(false);
     }

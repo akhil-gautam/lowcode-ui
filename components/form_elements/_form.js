@@ -60,7 +60,10 @@ export default function Form({ form_id }) {
       setIsOpen(false);
     } catch (e) {
       !e.response?.data && toast.error(e.message);
-      e.response?.data && Object.values(e.response?.data).forEach(toast.error);
+      e.response?.data &&
+        Object.values(e.response?.data)
+          .filter((el) => typeof el != 'object')
+          .forEach(toast.error);
     } finally {
       setLoading(false);
     }
@@ -68,11 +71,7 @@ export default function Form({ form_id }) {
 
   return (
     <>
-      <button
-        type='button'
-        onClick={openModal}
-        className='btn space-x-3'
-      >
+      <button type='button' onClick={openModal} className='btn space-x-3'>
         <span>Form element</span>
         <Plus />
       </button>
