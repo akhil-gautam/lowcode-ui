@@ -20,7 +20,7 @@ export default function DSList({ refetch }) {
     try {
       await axios.post(`data_sources/${data_source.id}/auto_create_pages`);
       toast.success('Generated successfully!!');
-      refetch();
+      await refetch();
       // TODO: redirect user to the newly created application
     } catch (error) {
       toast.error(error?.message);

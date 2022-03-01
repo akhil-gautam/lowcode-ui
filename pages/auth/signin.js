@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
 import axios from 'axios';
 import Link from 'next/link';
 
@@ -11,12 +11,20 @@ import { API_URL } from '../../constants';
 export default function SignIn() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [isLoggined, setIsLoggined] = useState(false);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  useEffect(() => {
+    const token = localStorage.getItem('auth-token');
+    if (token) {
+      setIsLoggined(true);
+    }
+  }, []);
 
   const onSubmit = async (data) => {
     if (loading) return;
@@ -38,6 +46,11 @@ export default function SignIn() {
       setLoading(false);
     }
   };
+
+  if (isLoggined) {
+    Router.push('/builder');
+    toast.success('Already logged in!');
+  }
 
   return (
     <section className='flex flex-col w-full h-screen items-center relative bg-gradient-to-tr from-white to-blue-100 pb-20 px-4 md:px-0 md:pb-0'>

@@ -49,6 +49,7 @@ export default function TestQuery({ data_source_id }) {
         Object.values(e.response?.data)
           .filter((el) => typeof el != 'object')
           .forEach(toast.error);
+      toast.error(e.message);
     } finally {
       setLoading(false);
     }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   BarChart,
   Bar,
@@ -16,6 +16,13 @@ import PG from '../images/pg.svg';
 import MySQL from '../images/mysql.svg';
 
 export default function Home() {
+  const [isLoggined, setIsLoggined] = useState(false);
+  useEffect(() => {
+    const token = localStorage.getItem('auth-token');
+    if (token) {
+      setIsLoggined(true);
+    }
+  }, []);
   return (
     <main className='w-screen h-full min-h-screen bg-black'>
       <div className='opacity-0 md:opacity-50 animate-spin-slow blur-3xl fixed mx-auto'>
@@ -57,9 +64,15 @@ export default function Home() {
               An open-source framework to build applications without pain. Build
               applications with modern users interface within seconds.
             </p>
-            <Link href='/auth/signup'>
-              <a className='btn btn-primary shadow'>Get started</a>
-            </Link>
+            {isLoggined ? (
+              <Link href='/builder'>
+                <a className='btn btn-primary shadow'>Go to builder</a>
+              </Link>
+            ) : (
+              <Link href='/auth/signup'>
+                <a className='btn btn-primary shadow'>Get started</a>
+              </Link>
+            )}
           </div>
         </div>
         <h2 className='font-extralight mt-10 mb-4 text-xl bg-blue-400/20 rounded-lg py-1 px-4'>
