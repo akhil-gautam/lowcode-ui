@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Router from 'next/router';
 import { useEffect, useState } from 'react';
 
 import { Button } from './shared';
@@ -13,6 +14,7 @@ export function Layout({ children, className = '' }) {
   const logout = () => {
     localStorage.removeItem('auth-token');
     setLoggedIn(null);
+    Router.push('/auth/signin');
   };
 
   return (

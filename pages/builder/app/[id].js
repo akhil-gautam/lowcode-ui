@@ -24,7 +24,7 @@ export default function AppEdit({ app_id }) {
       await fetchDS();
       await fetchApp();
     } catch (error) {
-      if ([422, 401].includes(error.response.status)) {
+      if ([422, 401].includes(error.response?.status)) {
         Router.push('/auth/signin');
       }
     }

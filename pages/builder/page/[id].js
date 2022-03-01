@@ -17,7 +17,11 @@ export default function PageEdit({ page_id, referer }) {
     if (pages.length) {
       setCurrentPage(pages.find((page) => page.id === page_id));
     } else {
-      await fetchById(page_id);
+      try {
+        await fetchById(page_id);
+      } catch (error) {
+        toast.error(error.message);
+      }
     }
   }, []);
 

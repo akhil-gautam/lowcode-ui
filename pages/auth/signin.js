@@ -40,16 +40,16 @@ export default function SignIn() {
   };
 
   return (
-    <section className='flex flex-col md:flex-row w-full h-screen md:justify-evenly items-center relative bg-gradient-to-tr from-white to-blue-100 pb-60 md:pb-0'>
+    <section className='flex flex-col w-full h-screen items-center relative bg-gradient-to-tr from-white to-blue-100 pb-20 px-4 md:px-0 md:pb-0'>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='flex flex-col my-8 md:my-36 rounded shadow w-11/12 md:w-5/12 px-3 md:px-20 pt-10 pb-20 bg-white'
+        className='flex flex-col mt-10 md:mt-36 mb-4 w-full md:max-w-lg rounded shadow px-3 md:px-20 pt-10 pb-10 bg-white'
       >
         <header className='font-bold text-2xl mb-4 text-center'>Login</header>
         <TextInput
           type='email'
           placeholder='Email'
-          helpText={errors.email?.message}
+          helperText={errors.email?.message}
           {...register('email', {
             required: 'Email is required!',
             pattern: /^\S+@\S+$/i,
@@ -65,13 +65,9 @@ export default function SignIn() {
           Login
         </Button>
       </form>
-      <div className='card bg-white px-10 py-3 hover:shadow-2xl'>
-        <Link href='/auth/signup'>
-          <a className='font-medium text-2xl text-blue-600'>
-            Or register here...
-          </a>
-        </Link>
-      </div>
+      <Link href='/auth/signup'>
+        <a className='btn btn-wide'>Or register here...</a>
+      </Link>
     </section>
   );
 }
