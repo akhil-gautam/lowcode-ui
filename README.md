@@ -23,7 +23,8 @@ https://img.shields.io/github/license/akhil-gautam/lowcode-ui?style=flat-square 
 <br/>
 
 <p align="center">
-<img width="1440" alt="Screenshot 2022-02-26 at 9 35 55 PM" src="https://user-images.githubusercontent.com/28865023/156117127-b27062c9-e074-4fcf-801f-7d46d3a382e1.png">
+  
+![pika-2022-03-02T07_22_54 954Z](https://user-images.githubusercontent.com/28865023/156314722-7697f8ee-8684-4c27-a30f-450d929edc11.png)
   <br/>
 </p>
 
